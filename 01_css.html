@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Completo de CSS para Profesores</title>
+    <!-- 
+    Enlazamos un archivo CSS externo donde podemos escribir nuestras reglas de estilo de manera organizada.
+    -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo global del cuerpo del documento */
+        body {
+            /* Aquí definimos el tipo de fuente y el color de fondo de toda la página. */
+            font-family: Arial, sans-serif; /* Fuente general */
+            background-color: #f0f0f0; /* Color de fondo suave */
+            color: #333; /* Color del texto */
+            margin: 0; /* Eliminar márgenes predeterminados */
+            padding: 0; /* Eliminar relleno predeterminado */
+        }
+
+        /* Estilos para el encabezado principal */
+        header {
+            background-color: #333; /* Fondo oscuro en el encabezado */
+            color: white; /* Texto en color blanco */
+            padding: 20px; /* Relleno interno */
+            text-align: center; /* Centrado del contenido */
+        }
+
+        /* Estilos para la navegación principal */
+        nav ul {
+            list-style-type: none; /* Eliminar los puntos de la lista */
+            padding: 0; /* Sin relleno en la lista */
+        }
+
+        nav ul li {
+            display: inline; /* Mostrar los elementos en una sola línea */
+            margin-right: 15px; /* Separar los enlaces entre sí */
+        }
+
+        nav ul li a {
+            color: white; /* Color de los enlaces en blanco */
+            text-decoration: none; /* Sin subrayado en los enlaces */
+        }
+
+        /* Estilos para las secciones */
+        section {
+            margin: 20px; /* Espacio alrededor de las secciones */
+            padding: 20px; /* Espacio interno dentro de las secciones */
+            background-color: #fff; /* Fondo blanco para contraste */
+            border: 1px solid #ccc; /* Borde ligero alrededor de las secciones */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+        }
+
+        /* Estilos de color aplicados a cajas */
+        .caja-roja {
+            background-color: red; /* Fondo rojo */
+            padding: 10px; /* Relleno interno */
+            color: white; /* Texto en blanco */
+            margin-bottom: 10px; /* Espacio entre cajas */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        .caja-azul {
+            background-color: blue; /* Fondo azul */
+            padding: 10px; /* Relleno interno */
+            color: white; /* Texto en blanco */
+            margin-bottom: 10px; /* Espacio entre cajas */
+        }
+
+        .caja-verde {
+            background-color: green; /* Fondo verde */
+            padding: 10px; /* Relleno interno */
+            color: white; /* Texto en blanco */
+            margin-bottom: 10px; /* Espacio entre cajas */
+        }
+
+        /* Estilos tipográficos */
+        .tipografia-courier {
+            font-family: 'Courier New', Courier, monospace; /* Fuente Courier */
+            font-size: 20px; /* Tamaño de fuente */
+        }
+
+        .tipografia-verdana {
+            font-family: Verdana, sans-serif; /* Fuente Verdana */
+            font-size: 18px; /* Tamaño de fuente */
+        }
+
+        /* Resaltado de texto */
+        .resaltado {
+            background-color: yellow; /* Fondo amarillo */
+            font-weight: bold; /* Texto en negrita */
+        }
+
+        /* Modelo de caja con margen, relleno y borde */
+        .modelo-caja {
+            border: 2px solid black; /* Borde negro */
+            padding: 20px; /* Espacio interno */
+            margin: 10px; /* Espacio externo */
+            background-color: #f9f9f9; /* Fondo gris claro */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado principal con el menú de navegación -->
+    <header>
+        <h1>Ejercicio Completo de CSS para Profesores</h1>
+        <nav>
+            <!-- Menú de navegación con enlaces a las secciones -->
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#colores">Colores</a></li>
+                <li><a href="#tipografia">Tipografía</a></li>
+                <li><a href="#modelo-caja">Modelo de Caja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Introducción al CSS -->
+    <section id="introduccion">
+        <h2>Introducción a CSS</h2>
+        <p>CSS, o Hojas de Estilo en Cascada, es el lenguaje que utilizamos para estilizar páginas web. Nos permite definir el diseño visual de los elementos HTML, como colores, tipografías, márgenes, etc.</p>
+    </section>
+
+    <!-- Sección sobre colores en CSS -->
+    <section id="colores">
+        <h2>Colores en CSS</h2>
+        <p>Podemos cambiar los colores de fondo y del texto utilizando las propiedades <strong>background-color</strong> y <strong>color</strong>, respectivamente.</p>
+        <div class="caja-roja">Caja con fondo rojo</div>
+        <div class="caja-azul">Caja con fondo azul</div>
+        <div class="caja-verde">Caja con fondo verde</div>
+        <!-- 
+        Explicación para el profesor:
+        - background-color: cambia el color de fondo del elemento.
+        - color: cambia el color del texto.
+        - padding: añade espacio dentro del borde del elemento.
+        - margin: añade espacio fuera del borde del elemento.
+        -->
+    </section>
+
+    <!-- Sección sobre tipografía en CSS -->
+    <section id="tipografia">
+        <h2>Tipografía</h2>
+        <p>CSS nos permite personalizar la fuente de los textos en nuestras páginas.</p>
+        <p class="tipografia-courier">Este texto está en la fuente Courier, con un tamaño de 20px.</p>
+        <p class="tipografia-verdana">Este texto está en la fuente Verdana, con un tamaño de 18px.</p>
+        <p class="resaltado">Este texto está resaltado con un fondo amarillos.</p>
+        <!-- 
+        Explicación para el profesor:
+        - font-family: define la fuente que queremos utilizar.
+        - font-size: define el tamaño de la fuente.
+        - font-weight: cambia el grosor del texto (por ejemplo, negrita).
+        -->
+    </section>
+
+    <!-- Sección sobre el modelo de caja en CSS -->
+    <section id="modelo-caja">
+        <h2>Modelo de Caja</h2>
+        <p>El modelo de caja en CSS es fundamental para entender cómo se estructuran los elementos en la página. Cada elemento HTML se trata como una caja que tiene contenido, relleno (padding), borde (border) y margen (margin).</p>
+        <div class="modelo-caja">
+            Esta caja tiene margen, relleno, borde y un fondo claro.
+        </div>
+        <!-- 
+        Explicación para el profesor:
+        - margin: espacio externo, entre la caja y otros elementos.
+        - padding: espacio interno, entre el contenido y el borde.
+        - border: define el grosor y color del borde alrededor del contenido.
+        -->
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Web Completa para Alumnos</title>
+    <!-- 
+    <meta charset="UTF-8"> define la codificación de caracteres, lo que es importante para evitar problemas con caracteres especiales.
+    <meta name="viewport"> ajusta el ancho de la página al dispositivo, crucial para la compatibilidad con dispositivos móviles.
+    -->
+</head>
+<body>
+
+    <!-- 
+    Encabezado de la página. El header es fundamental ya que contiene el título principal y la navegación. 
+    El alumno debe crear un <header> con un <h1> para el título y un <nav> que incluya un menú de navegación con enlaces a las secciones.
+    -->
+    <header>
+        <h1>Completa el encabezado</h1>
+        <nav>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#seccion-tablas">Tablas</a></li>
+                <li><a href="#seccion-imagenes">Imágenes</a></li>
+                <li><a href="#seccion-formularios">Formularios</a></li>
+                <li><a href="#seccion-multimedia">Multimedia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!--
+        Sección introductoria. Los alumnos deben crear una <section> con un título <h2> sobre HTML. Luego, añadir un párrafo 
+        explicando qué es HTML y dos listas: una desordenada (<ul>) para las tecnologías web y una ordenada (<ol>) para los pasos para crear una página.
+        -->
+        <section id="introduccion">
+            <h2>Introducción a HTML</h2>
+            <p>Aquí los alumnos deben añadir una explicación sobre HTML.</p>
+
+            <h3>Listas Desordenadas</h3>
+            <!-- Añade una lista desordenada con tres tecnologías web, como HTML, CSS y JavaScript. -->
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <h3>Listas Ordenadas</h3>
+            <!-- Añade una lista ordenada con tres pasos para crear una página web. -->
+            <ol>
+                <li>Entender la estructura HTML</li>
+                <li>Escribir el código HTML</li>
+                <li>Publicar la página</li>
+            </ol>
+        </section>
+
+        <!--
+        Sección de tablas. Aquí los alumnos deberán crear una tabla con filas de productos. Deben incluir columnas para Producto, Precio y Cantidad.
+        -->
+        <section id="seccion-tablas">
+            <h2>Uso de Tablas en HTML</h2>
+            <p>En esta sección, el alumno debe crear una tabla para listar productos.</p>
+            <!-- Crea una tabla con encabezado (thead) y cuerpo (tbody). Cada fila debe tener datos de productos. -->
+            <table border="1">
+                <caption>Lista de Productos</caption>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Producto 1</td>
+                        <td>$10</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Producto 2</td>
+                        <td>$20</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!--
+        Sección sobre imágenes. Los alumnos deben añadir una imagen con la etiqueta <img>. Recuerda que deben usar los atributos src y alt.
+        -->
+        <section id="seccion-imagenes">
+            <h2>Integración de Imágenes en HTML</h2>
+            <p>Los alumnos deben insertar una imagen en esta sección usando la etiqueta <img> y proporcionar una descripción alternativa con el atributo alt.</p>
+            <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo">
+        </section>
+
+        <!--
+        Sección de formularios. Los alumnos deben crear un formulario con varios tipos de entrada, como texto, correo, y un área de comentarios.
+        -->
+        <section id="seccion-formularios">
+            <h2>Formularios en HTML</h2>
+            <p>Los alumnos deben crear un formulario con campos como nombre, correo y comentarios.</p>
+            <form action="enviar.php" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="comentarios">Comentarios:</label>
+                <textarea id="comentarios" name="comentarios"></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <!--
+        Sección multimedia. Los alumnos deben integrar un video y un archivo de audio utilizando las etiquetas <video> y <audio>.
+        -->
+        <section id="seccion-multimedia">
+            <h2>Uso de Multimedia en HTML</h2>
+            <h3>Incluir Video</h3>
+            <video controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+
+            <h3>Incluir Audio</h3>
+            <audio controls>
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+        </section>
+    </main>
+
+    <footer>
+        <p>Creado por [Nombre del alumno].</p>
+        <!-- Los alumnos deben crear un menú de navegación dentro del pie de página para volver a las secciones principales. -->
+        <nav>
+            <ul>
+                <li><a href="#introduccion">Inicio</a></li>
+                <li><a href="#seccion-tablas">Tablas</a></li>
+                <li><a href="#seccion-imagenes">Imágenes</a></li>
+                <li><a href="#seccion-formularios">Formularios</a></li>
+                <li><a href="#seccion-multimedia">Multimedia</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>
