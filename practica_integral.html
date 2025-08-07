@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Integral: HTML, CSS, Bootstrap e Inteligencia Artificial</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados mejorados -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: #222;
+        }
+        .logo {
+            width: 80px;
+            filter: drop-shadow(0 2px 4px #0002);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        h2 {
+            color: #d7263d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .ai-response {
+            background: #e9ecef;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px #0001;
+            min-height: 48px;
+        }
+        .exercise {
+            background: #fffbe6;
+            border-left: 6px solid #ffd600;
+            padding: 1.2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .exercise strong {
+            color: #d7263d;
+        }
+        .table {
+            background: #f4f8fb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #e3e9f7;
+        }
+        p, li, label, input, textarea, select {
+            font-size: 1.08rem;
+        }
+        .form-control, .form-label {
+            border-radius: 6px;
+        }
+        .btn-primary, .btn-success {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .alert-info {
+            background: linear-gradient(90deg, #e0e7ff 60%, #fff 100%);
+            color: #1a237e;
+            border: none;
+        }
+        .row .col-md-4, .row .col-md-6 {
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: #212529;
+            color: #fff;
+            padding: 1.2rem 0;
+            margin-top: 2.5rem;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            box-shadow: 0 -2px 12px #0002;
+        }
+        /* Accesibilidad: foco visible */
+        a:focus, button:focus, input:focus, textarea:focus, select:focus {
+            outline: 2px solid #d7263d;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="https://via.placeholder.com/80" alt="Logo" class="logo"> Práctica Integral</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#html">HTML</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#css">CSS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bootstrap">Bootstrap</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ia">IA</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container text-center my-5">
+        <h1>Práctica Integral: HTML, CSS, Bootstrap e Inteligencia Artificial</h1>
+        <p class="lead">Aprende a crear páginas web modernas y experimenta con IA en el aula</p>
+        <!--
+            INSTRUCCIONES GENERALES:
+            - Lee atentamente cada sección y los comentarios en el código.
+            - Realiza los ejercicios propuestos en cada bloque.
+            - Las partes marcadas con "// TU CÓDIGO AQUÍ" o "<!-- TU CÓDIGO AQUÍ -->" debes completarlas tú.
+            - Usa ChatGPT para pedir ayuda, ejemplos o explicaciones adicionales.
+        -->
+    </header>
+    <main class="container">
+        <!-- Sección HTML -->
+        <section id="html">
+            <h2>1. Fundamentos de HTML</h2>
+            <p>HTML es el lenguaje base de la web. Sirve para estructurar el contenido de una página. Observa la estructura básica y los comentarios:</p>
+            <pre><code>&lt;!DOCTYPE html&gt; <!-- Indica el tipo de documento -->
+&lt;html lang="es"&gt; <!-- Idioma principal -->
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt; <!-- Codificación de caracteres -->
+    &lt;title&gt;Mi Página&lt;/title&gt; <!-- Título en la pestaña -->
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;¡Hola Mundo!&lt;/h1&gt; <!-- Título principal -->
+    &lt;p&gt;Este es un párrafo.&lt;/p&gt; <!-- Párrafo de texto -->
+    <!-- TU CÓDIGO AQUÍ: Añade una imagen tuya usando <img src="URL" alt="Tu nombre"> -->
+    <!-- TU CÓDIGO AQUÍ: Haz una lista de tus hobbies usando <ul> y <li> -->
+    <!-- TU CÓDIGO AQUÍ: Añade un enlace a tu web favorita -->
+    <!-- TU CÓDIGO AQUÍ: Crea una tabla sencilla con tus 3 comidas favoritas -->
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <div class="exercise">
+                <strong>Ejercicios:</strong>
+                <ul>
+                  <li>Completa las partes comentadas en el código anterior.</li>
+                  <li>Agrega un segundo párrafo explicando por qué te gusta programar.</li>
+                  <li>Pregunta a ChatGPT: <em>"¿Cómo se crea una tabla en HTML?"</em></li>
+                </ul>
+            </div>
+            <!--
+                CONSEJO: Usa siempre etiquetas semánticas (<header>, <nav>, <main>, <footer>) para organizar tu página.
+            -->
+        </section>
+        <!-- Sección CSS -->
+        <section id="css">
+            <h2>2. Introducción a CSS</h2>
+            <p>CSS permite dar estilo a tu HTML. Puedes escribirlo en un archivo externo, en el &lt;head&gt; con &lt;style&gt;, o en línea. Observa el ejemplo y los comentarios:</p>
+            <pre><code>&lt;style&gt;
+body {
+  background: #f0f0f0; /* Color de fondo */
+  color: #333;          /* Color del texto */
+  font-family: Arial, sans-serif; /* Fuente */
+  margin: 0;            /* Elimina márgenes por defecto */
+}
+h1 {
+  color: #007bff;       /* Color azul para títulos */
+  text-align: center;   /* Centra el texto */
+}
+a {
+  color: green;         /* Color de los enlaces */
+  text-decoration: none;/* Sin subrayado */
+}
+a:hover {
+  color: orange;        /* Color al pasar el ratón */
+}
+/* TU CÓDIGO AQUÍ: Cambia el color de fondo de la tabla y el tamaño de fuente de los párrafos */
+&lt;/style&gt;</code></pre>
+            <div class="exercise">
+                <strong>Ejercicios:</strong>
+                <ul>
+                  <li>Personaliza los colores y fuentes de tu página.</li>
+                  <li>Haz que los títulos secundarios (&lt;h2&gt;) sean de color rojo y estén en mayúsculas.</li>
+                  <li>Pregunta a ChatGPT: <em>"¿Cómo cambio el color de fondo de una tabla en CSS?"</em></li>
+                </ul>
+            </div>
+            <!--
+                CONSEJO: Usa selectores de clase (.) y de id (#) para aplicar estilos a elementos concretos.
+            -->
+        </section>
+        <!-- Sección Bootstrap -->
+        <section id="bootstrap">
+            <h2>3. Componentes de Bootstrap</h2>
+            <p>Bootstrap facilita la creación de sitios responsivos y atractivos. Observa los ejemplos y los comentarios:</p>
+            <!-- Botón Bootstrap -->
+            <button class="btn btn-primary">Botón Bootstrap</button>
+            <!-- Alerta Bootstrap -->
+            <div class="alert alert-info mt-3">Este es un mensaje informativo con Bootstrap.</div>
+            <!-- Tabla Bootstrap -->
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr><th>Asignatura</th><th>Profesor/a</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Matemáticas</td><td>Juan</td></tr>
+                    <tr><td>Lengua</td><td>Ana</td></tr>
+                    <tr><td>Inglés</td><td>Lucía</td></tr>
+                </tbody>
+            </table>
+            <!-- Formulario Bootstrap -->
+            <form class="mt-3">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo electrónico:</label>
+                    <input type="email" class="form-control" id="correo" placeholder="ejemplo@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="curso" class="form-label">Curso:</label>
+                    <select class="form-control" id="curso">
+                        <option value="">Selecciona tu curso</option>
+                        <option value="1ESO">1º ESO</option>
+                        <option value="2ESO">2º ESO</option>
+                        <option value="3ESO">3º ESO</option>
+                        <option value="4ESO">4º ESO</option>
+                        <option value="Bach">Bachillerato</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+            <!-- Grid Bootstrap -->
+            <div class="row mt-4">
+                <div class="col-md-4"><div class="p-3 bg-light border">Columna 1</div></div>
+                <div class="col-md-4"><div class="p-3 bg-light border">Columna 2</div></div>
+                <div class="col-md-4"><div class="p-3 bg-light border">Columna 3</div></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><div class="p-3 bg-light border">Columna extra A</div></div>
+                <div class="col-md-6"><div class="p-3 bg-light border">Columna extra B</div></div>
+            </div>
+            <div class="exercise">
+                <strong>Ejercicios:</strong>
+                <ul>
+                  <li>Completa la tabla y el formulario.</li>
+                  <li>Agrega una fila con dos columnas al grid anterior.</li>
+                  <li>Pregunta a ChatGPT: <em>"¿Cómo funciona el sistema de grid en Bootstrap?"</em></li>
+                </ul>
+            </div>
+            <!--
+                CONSEJO: Usa la documentación oficial de Bootstrap para descubrir más componentes (cards, modals, navs, etc).
+            -->
+        </section>
+        <!-- Sección IA -->
+        <section id="ia">
+            <h2>4. Ejercicios con Inteligencia Artificial (ChatGPT)</h2>
+            <p>
+                <strong>¿Cómo usar ChatGPT en clase?</strong><br>
+                Puedes pedirle a ChatGPT que te explique conceptos, te ayude a corregir código o te proponga ejercicios. <br>
+                <em>Ejemplo de prompt:</em> "Explícame cómo funciona el sistema de rejilla (grid) en Bootstrap con un ejemplo."
+            </p>
+            <form id="aiForm" class="mb-3">
+                <div class="mb-3">
+                    <label for="userQuestion" class="form-label">Pregunta a la IA:</label>
+                    <input type="text" class="form-control" id="userQuestion" placeholder="¿Qué es HTML?" required>
+                </div>
+                <button type="submit" class="btn btn-success">Preguntar</button>
+            </form>
+            <div id="aiResponse" class="ai-response" style="display:none;"></div>
+            <div class="exercise">
+                <strong>Ejercicios:</strong>
+                <ul>
+                  <li>Escribe una pregunta sobre HTML, CSS o Bootstrap y analiza la respuesta.</li>
+                  <li>Pide a ChatGPT que te proponga un ejercicio práctico y resuélvelo en tu código.</li>
+                  <li>Pide a ChatGPT que te explique un error que no entiendas.</li>
+                  <li>Pide a ChatGPT que te ayude a mejorar el diseño de tu página.</li>
+                </ul>
+            </div>
+            <!--
+                OTRAS IDEAS PARA USAR CHATGPT EN CLASE:
+                - Pide ejemplos de código y pégalos en tu editor para probarlos.
+                - Solicita explicaciones de errores que no entiendas.
+                - Pide que te corrija o mejore tu código.
+                - Pregunta por buenas prácticas de accesibilidad o SEO.
+                - Pide ejercicios de repaso o retos de programación.
+            -->
+        </section>
+    </main>
+    <footer class="text-center">
+        <p>© 2025 Práctica Integral | Desarrollado para clases de iniciación web</p>
+        <!--
+            RECUERDA:
+            - Puedes consultar la documentación oficial de HTML, CSS y Bootstrap.
+            - Usa ChatGPT como apoyo, pero intenta primero resolver los ejercicios por ti mismo.
+            - ¡No tengas miedo de experimentar y equivocarte!
+            - Si tienes dudas, pregunta a tu profesor o a ChatGPT.
+        -->
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Simulación de IA con JavaScript mejorada -->
+    <script>
+        const aiForm = document.getElementById('aiForm');
+        const aiResponse = document.getElementById('aiResponse');
+        // Respuestas ampliadas y efecto "escribiendo"
+        const respuestas = [
+            {
+                test: q => q.includes('html'),
+                resp: 'HTML es el lenguaje de marcado principal para crear páginas web. Permite estructurar el contenido usando etiquetas como <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code> y <code>&lt;img&gt;</code>.'
+            },
+            {
+                test: q => q.includes('css'),
+                resp: 'CSS se utiliza para dar estilo y formato a las páginas web. Puedes cambiar colores, fuentes, márgenes y hacer que tu web sea responsiva.'
+            },
+            {
+                test: q => q.includes('bootstrap'),
+                resp: 'Bootstrap es un framework CSS que facilita el diseño web responsivo y moderno. Incluye componentes listos para usar como botones, alertas y grids.'
+            },
+            {
+                test: q => q.includes('tabla'),
+                resp: 'Para crear una tabla en HTML usa <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code> y <code>&lt;td&gt;</code>. Ejemplo:<br><code>&lt;table&gt;\n  &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;/tr&gt;\n  &lt;tr&gt;&lt;td&gt;Ana&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;</code>'
+            },
+            {
+                test: q => q.includes('grid'),
+                resp: 'El sistema de grid en Bootstrap divide la página en 12 columnas. Puedes combinar columnas usando clases como <code>col-md-4</code> o <code>col-md-6</code> para crear diseños responsivos.'
+            },
+            {
+                test: q => q.includes('accesibilidad'),
+                resp: 'La accesibilidad web implica diseñar sitios para que todos puedan usarlos, incluyendo personas con discapacidad. Usa etiquetas semánticas, textos alternativos y buen contraste.'
+            },
+            {
+                test: q => q.includes('seo'),
+                resp: 'SEO (Search Engine Optimization) son técnicas para mejorar el posicionamiento de tu web en buscadores. Usa títulos claros, meta descripciones y estructura semántica.'
+            },
+            {
+                test: q => q.includes('error'),
+                resp: 'Cuando tengas un error, lee el mensaje con atención, revisa tu código y busca ejemplos similares. ¡Pregunta a tu profesor o a ChatGPT si necesitas ayuda!'
+            },
+        ];
+        function escribirRespuesta(texto, elemento) {
+            elemento.innerHTML = '';
+            let i = 0;
+            function escribir() {
+                if (i < texto.length) {
+                    elemento.innerHTML += texto[i] === '\\' ? '<br>' : texto[i];
+                    i++;
+                    setTimeout(escribir, 12);
+                }
+            }
+            escribir();
+        }
+        aiForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const question = document.getElementById('userQuestion').value.toLowerCase();
+            let answer = '¡Buena pregunta! Investiga más sobre ese tema o consulta la documentación oficial.';
+            for (const r of respuestas) {
+                if (r.test(question)) {
+                    answer = r.resp;
+                    break;
+                }
+            }
+            aiResponse.style.display = 'block';
+            escribirRespuesta(answer, aiResponse);
+        });
+    </script>
+</body>
+</html>
