@@ -315,6 +315,217 @@ SECCIÓN FINAL: MINI PROYECTO
     <li>Guarda los colores en un array y muéstralos en consola con un bucle.</li>
   </ol>
 </section>
+<!-- =====================================================
+SECCIÓN 8: OBJETOS EN JAVASCRIPT
+===================================================== -->
+<section>
+  <h2>8. Objetos en JavaScript</h2>
+
+  <!-- 
+    💡 ¿Qué es un objeto?
+    Es una estructura que agrupa datos relacionados en pares clave:valor.
+    Ejemplo:
+      let persona = {
+        nombre: "Cinthia",
+        edad: 28
+      };
+  -->
+
+  <button onclick="mostrarPersona()">Mostrar objeto persona</button>
+
+  <script>
+    /*
+      =============================
+      FUNCIÓN mostrarPersona
+      =============================
+      1. Creamos un objeto "persona" con propiedades: nombre, edad, ciudad.
+      2. Mostramos sus datos concatenando propiedades con punto (persona.propiedad).
+    */
+    function mostrarPersona() {
+      let persona = {
+        nombre: "Cinthia",
+        edad: 28,
+        ciudad: "Madrid"
+      };
+
+      alert(`Me llamo ${persona.nombre}, tengo ${persona.edad} años y vivo en ${persona.ciudad}.`);
+    }
+  </script>
+
+  <div style="background:#fff3cd;padding:10px;border-radius:8px;margin-top:10px;">
+    🎯 <strong>Reto:</strong> Crea un objeto llamado <code>coche</code>  
+    con marca, modelo y año. Muestra su información en un alert.
+  </div>
+</section>
+
+<!-- =====================================================
+SECCIÓN 9: EVENTOS MÁS AVANZADOS
+===================================================== -->
+<section>
+  <h2>9. Eventos más avanzados</h2>
+
+  <!-- 
+    💡 Los eventos permiten reaccionar a acciones del usuario:
+       - click
+       - mouseover
+       - input
+       - change
+  -->
+
+  <p id="textoEvento">Pasa el ratón por encima de este texto</p>
+  <input id="nombreInput" type="text" placeholder="Escribe tu nombre...">
+
+  <script>
+    // Cambiar color del texto cuando el ratón pasa encima
+    document.getElementById("textoEvento").addEventListener("mouseover", function() {
+      this.style.color = "red";
+      this.innerText = "¡Pasaste el ratón por encima!";
+    });
+
+    // Mostrar mensaje en consola mientras se escribe en el input
+    document.getElementById("nombreInput").addEventListener("input", function() {
+      console.log("Escribiendo:", this.value);
+    });
+  </script>
+
+  <div style="background:#e6f4ea;padding:10px;border-radius:8px;margin-top:10px;">
+    💡 <strong>Tip:</strong> Con <code>addEventListener</code> puedes asignar varios eventos sin sobrescribir otros.
+  </div>
+</section>
+
+<!-- =====================================================
+SECCIÓN 10: MANIPULACIÓN DEL DOM MÁS VISTOSA
+===================================================== -->
+<section>
+  <h2>10. Manipulación del DOM (cambiar estilos e imágenes)</h2>
+
+  <!-- 
+    💡 Podemos modificar estilos, atributos e incluso imágenes desde JS.
+  -->
+
+  <img id="imagenDemo" src="https://via.placeholder.com/150" alt="Imagen demo">
+  <br>
+  <button onclick="cambiarImagen()">Cambiar imagen</button>
+  <button onclick="cambiarColorFondo()">Cambiar color de fondo</button>
+
+  <script>
+    function cambiarImagen() {
+      document.getElementById("imagenDemo").src = "https://picsum.photos/200";
+    }
+
+    function cambiarColorFondo() {
+      document.body.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    }
+  </script>
+
+  <div style="background:#fff3cd;padding:10px;border-radius:8px;margin-top:10px;">
+    🎯 <strong>Reto:</strong> Crea un botón que cambie el <code>alt</code> de la imagen y otro que le añada un borde rojo.
+  </div>
+</section>
+
+<!-- =====================================================
+SECCIÓN 11: GUARDAR DATOS CON localStorage
+===================================================== -->
+<section>
+  <h2>11. Guardar datos en el navegador con localStorage</h2>
+
+  <!-- 
+    💡 localStorage guarda datos de forma permanente en el navegador (hasta que se borre).
+    Métodos principales:
+      localStorage.setItem("clave", valor)
+      localStorage.getItem("clave")
+      localStorage.removeItem("clave")
+  -->
+
+  <input id="datoGuardar" type="text" placeholder="Escribe algo para guardar">
+  <button onclick="guardarDato()">Guardar</button>
+  <button onclick="mostrarDato()">Mostrar guardado</button>
+
+  <script>
+    function guardarDato() {
+      let dato = document.getElementById("datoGuardar").value;
+      localStorage.setItem("miDato", dato);
+      alert("Dato guardado ✅");
+    }
+
+    function mostrarDato() {
+      let dato = localStorage.getItem("miDato");
+      alert("Dato guardado: " + dato);
+    }
+  </script>
+
+  <div style="background:#e6f4ea;padding:10px;border-radius:8px;margin-top:10px;">
+    💡 <strong>Tip:</strong> localStorage solo guarda texto. Para objetos, usa <code>JSON.stringify()</code> y <code>JSON.parse()</code>.
+  </div>
+</section>
+
+<!-- =====================================================
+SECCIÓN 12: MINI PROYECTO LISTA DE TAREAS
+===================================================== -->
+<section>
+  <h2>🎯 Mini proyecto: Lista de tareas interactiva</h2>
+
+  <!-- 
+    Objetivo:
+      1. Escribir una tarea en el input y añadirla a la lista.
+      2. Poder marcarla como completada.
+      3. Guardar las tareas en localStorage para que no se pierdan al recargar.
+  -->
+
+  <input id="nuevaTarea" type="text" placeholder="Nueva tarea">
+  <button onclick="agregarTarea()">Añadir</button>
+  <ul id="listaTareas"></ul>
+
+  <script>
+    // Cargar tareas guardadas al iniciar
+    document.addEventListener("DOMContentLoaded", cargarTareas);
+
+    function agregarTarea() {
+      let texto = document.getElementById("nuevaTarea").value;
+      if (texto.trim() === "") return alert("Escribe una tarea");
+      
+      let li = document.createElement("li");
+      li.textContent = texto;
+
+      // Evento para marcar como completada
+      li.addEventListener("click", function() {
+        this.style.textDecoration = this.style.textDecoration === "line-through" ? "" : "line-through";
+        guardarTareas();
+      });
+
+      document.getElementById("listaTareas").appendChild(li);
+      document.getElementById("nuevaTarea").value = "";
+
+      guardarTareas();
+    }
+
+    function guardarTareas() {
+      let tareas = [];
+      document.querySelectorAll("#listaTareas li").forEach(li => {
+        tareas.push({ texto: li.textContent, completada: li.style.textDecoration === "line-through" });
+      });
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+    }
+
+    function cargarTareas() {
+      let tareasGuardadas = JSON.parse(localStorage.getItem("tareas") || "[]");
+      tareasGuardadas.forEach(t => {
+        let li = document.createElement("li");
+        li.textContent = t.texto;
+        if (t.completada) li.style.textDecoration = "line-through";
+        li.addEventListener("click", function() {
+          this.style.textDecoration = this.style.textDecoration === "line-through" ? "" : "line-through";
+          guardarTareas();
+        });
+        document.getElementById("listaTareas").appendChild(li);
+      });
+    }
+  </script>
+
+  <div style="background:#fff3cd;padding:10px;border-radius:8px;margin-top:10px;">
+    🎯 <strong>Extensión:</strong> Añade un botón junto a cada tarea para eliminarla.
+  </div>
+</section>
 
 </body>
 </html>
