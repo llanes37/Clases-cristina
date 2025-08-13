@@ -1,0 +1,320 @@
+<!-- 
+==========================================================
+CLASE COMPLETA DE JAVASCRIPT PARA PRINCIPIANTES - PARTE 1
+==========================================================
+Autor: Joaquín Rodríguez Llanes
+Destinataria: Cristina
+Descripción: Clase práctica con teoría, ejemplos comentados paso a paso y ejercicios.
+Objetivo: Aprender las bases de JS modificando este mismo archivo.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase JavaScript para Cristina</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+SECCIÓN 0: INTRODUCCIÓN GENERAL
+===================================================== -->
+<section>
+  <h2>📘 Introducción general a JavaScript</h2>
+  <!-- 
+    JavaScript es el lenguaje que da interactividad a las páginas web.
+    Con él podemos:
+      - Mostrar mensajes emergentes.
+      - Pedir datos al usuario.
+      - Cambiar texto, colores o imágenes.
+      - Crear juegos, apps, calculadoras y más.
+
+    Recuerda:
+      HTML  → contenido
+      CSS   → diseño
+      JS    → interacción
+  -->
+  <p><strong>¿Qué es JavaScript?</strong></p>
+  <ul>
+    <li><strong>HTML</strong> define el contenido.</li>
+    <li><strong>CSS</strong> le da diseño.</li>
+    <li><strong>JavaScript</strong> lo hace interactivo.</li>
+  </ul>
+</section>
+
+<!-- =====================================================
+SECCIÓN 1: alert()
+===================================================== -->
+<section>
+  <h2>1. Mostrar un mensaje con <code>alert()</code></h2>
+  <p>Con <code>alert()</code> podemos mostrar una ventana emergente en el navegador.</p>
+  <button onclick="mostrarSaludo()">Haz clic para saludar</button>
+
+  <script>
+    // Función que muestra un saludo en una ventana emergente.
+    // Las funciones en JS se declaran con "function" y un nombre descriptivo.
+    function mostrarSaludo() {
+      alert("¡Hola Cinthia! Bienvenida a tu clase de JavaScript 🎉");
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <p>
+    // TODO: Crea una función llamada <code>mostrarDespedida()</code>  
+    // que muestre el mensaje: "¡Hasta luego Cinthia!" usando alert().
+  </p>
+</section>
+
+<!-- =====================================================
+SECCIÓN 2: VARIABLES
+===================================================== -->
+<section>
+  <h2>2. Variables</h2>
+  <!--
+    Una variable es un "contenedor" donde guardamos datos.
+
+    Tipos más usados:
+      - let   → valor que puede cambiar.
+      - const → valor constante (no se reasigna).
+
+    Buenas prácticas:
+      - Usa nombres descriptivos (nombre, edad, colorFavorito).
+      - const por defecto; let solo si necesitas cambiar el valor.
+  -->
+  <button onclick="mostrarVariables()">Mostrar mis datos</button>
+
+  <script>
+    function mostrarVariables() {
+      let nombre = "Cinthia";     // Guardamos un nombre (puede cambiar)
+      const ciudad = "Madrid";    // Constante con la ciudad (no cambia)
+      
+      // Concatenación con + (también puedes usar template string con backticks)
+      alert("Te llamas " + nombre + " y estás en " + ciudad);
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <p>
+    // TODO: Crea una variable llamada <code>colorFavorito</code>  
+    // y muéstrala con alert().
+  </p>
+</section>
+
+<!-- =====================================================
+SECCIÓN 3: CONDICIONALES
+===================================================== -->
+<section>
+  <h2>3. Condicionales (if / else)</h2>
+  <!--
+    Un condicional ejecuta un bloque de código solo si la condición es verdadera.
+    
+    Sintaxis básica:
+      if (condición) {
+        // código si es true
+      } else {
+        // código si es false
+      }
+  -->
+  <button onclick="evaluarEdad()">¿Mayor de edad?</button>
+
+  <script>
+    function evaluarEdad() {
+      let edad = prompt("¿Cuántos años tienes?"); // prompt devuelve texto
+      edad = Number(edad); // Convertimos a número para comparar
+
+      if (edad >= 18) {
+        alert("Eres mayor de edad ✅");
+      } else if (edad < 5) {
+        alert("Eres un bebé 👶");
+      } else {
+        alert("Eres menor de edad 🚫");
+      }
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <ul>
+    <li>// TODO: Crea una función que diga si tienes más de 30 años o no.</li>
+    <li>// BONUS: Usa if / else if / else para dar diferentes mensajes según la edad.</li>
+  </ul>
+</section>
+
+<!-- =====================================================
+SECCIÓN 4: CAMBIAR TEXTO DEL HTML
+===================================================== -->
+<section>
+  <h2>4. Cambiar texto del HTML</h2>
+  <!--
+    Podemos cambiar el contenido de un elemento HTML usando:
+      document.getElementById("id").innerText = "Nuevo texto";
+  -->
+  <p id="textoCambiante">Este texto va a cambiar.</p>
+  <button onclick="cambiarTexto()">Cambiar</button>
+
+  <script>
+    function cambiarTexto() {
+      // Seleccionamos el párrafo por su id y cambiamos su texto
+      document.getElementById("textoCambiante").innerText = "¡Texto actualizado desde JavaScript!";
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <p>
+    // TODO: Crea otro <code>&lt;p&gt;</code> con id="mensajeExtra"  
+    // y un botón que cambie su contenido cuando lo pulses.
+  </p>
+</section>
+
+<!-- =====================================================
+SECCIÓN 5: FUNCIONES CON PARÁMETROS
+===================================================== -->
+<section>
+  <h2>5. Funciones con parámetros</h2>
+  <!--
+    Los parámetros son valores que se pasan a la función para que los use.
+    return devuelve un valor al lugar donde se llamó la función.
+  -->
+  <button onclick="calcularMultiplicacion()">Calcular 3 x 4</button>
+
+  <script>
+    // Función que recibe dos números y devuelve su multiplicación
+    function multiplicar(a, b) {
+      return a * b;
+    }
+
+    function calcularMultiplicacion() {
+      let resultado = multiplicar(3, 4);
+      alert("El resultado de 3 x 4 es: " + resultado);
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <ul>
+    <li>// TODO: Crea una función que reste dos números y muestre el resultado con alert.</li>
+    <li>// BONUS: Haz que pida al usuario los dos números con prompt().</li>
+  </ul>
+</section>
+
+<!-- =====================================================
+SECCIÓN 6: BUCLES
+===================================================== -->
+<section>
+  <h2>6. Bucles</h2>
+  <!--
+    Un bucle repite código varias veces.
+    Ejemplo con for:
+      for (let i = 1; i <= 5; i++) {
+        // código repetido
+      }
+  -->
+  <button onclick="bucleSimple()">Ver bucle</button>
+
+  <script>
+    function bucleSimple() {
+      for (let i = 1; i <= 5; i++) {
+        console.log("Contador:", i); // Muestra en la consola del navegador
+      }
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <p>
+    // TODO: Cambia el bucle para que cuente de 5 a 1 (al revés).  
+    // BONUS: Muestra solo los números pares.
+  </p>
+</section>
+
+<!-- =====================================================
+SECCIÓN 7: ARRAYS
+===================================================== -->
+<section>
+  <h2>7. Arrays (listas)</h2>
+  <!--
+    Un array es una lista de elementos.
+    Ejemplo:
+      let frutas = ["manzana", "banana"];
+      frutas.push("pera"); // añade al final
+  -->
+  <button onclick="verFrutas()">Mostrar frutas</button>
+
+  <script>
+    function verFrutas() {
+      let frutas = ["manzana", "banana", "pera"];
+      frutas.push("kiwi"); // Añadimos una más
+
+      // Recorremos el array con un bucle for
+      for (let i = 0; i < frutas.length; i++) {
+        console.log("Fruta " + (i + 1) + ":", frutas[i]);
+      }
+    }
+  </script>
+
+  <h3>🧪 Tu turno</h3>
+  <ul>
+    <li>// TODO: Crea un array de animales y muestra cada uno en consola.</li>
+    <li>// BONUS: Elimina el primer elemento con shift() y muestra el resultado.</li>
+  </ul>
+</section>
+
+<!-- =====================================================
+SECCIÓN FINAL: MINI PROYECTO
+===================================================== -->
+<section>
+  <h2>🎯 MINI PROYECTO FINAL</h2>
+  <!--
+    En este ejercicio aplicarás todo lo aprendido:
+
+    1. Preguntar al usuario su nombre y edad con prompt().
+    2. Guardar esas respuestas en variables.
+    3. Cambiar el contenido de un <p> en el HTML para mostrar esos datos.
+    4. Mostrar un alert con el mensaje personalizado.
+    5. Guardar sus colores favoritos en un array y mostrarlos en consola.
+  -->
+  <p><strong>Instrucciones:</strong></p>
+  <ol>
+    <li>Crea una función llamada <code>miProyecto()</code>.</li>
+    <li>Usa <code>prompt()</code> para preguntar el nombre, edad y color favorito.</li>
+    <li>Muestra un mensaje con alert saludando por nombre y edad.</li>
+    <li>Cambia el texto de un <code>&lt;p&gt;</code> desde la función.</li>
+    <li>Guarda los colores en un array y muéstralos en consola con un bucle.</li>
+  </ol>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!-- 
+==========================================================
+CLASE COMPLETA DE JAVASCRIPT PARA PRINCIPIANTES - PARTE 1
+==========================================================
+Autor: Joaquín Rodríguez Llanes
+Destinataria: Cristina
+Descripción: Clase completa con teoría, ejemplos comentados y ejercicios guiados.
+Notas didácticas:
+ - Tras cada sección hay un "Resumen + Práctica".
+ - Hay un área de salida (div#salida) para mostrar resultados sin depender solo de alert().
+ - Ejercicios con TODO y BONUS, pensados para ir de menos a más.
+ - Código y UX limpios, accesibles, y con modo oscuro.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clase JavaScript para Cristina · Parte 1</title>
+  <style>
+    :root{
+      --bg:#f7f7f8; --card:#fff; --text:#222; --muted:#666; --accent:#3949ab; --ok:#2e7d32; --warn:#c62828; --code:#111;
+      --shadow:0 4px 16px rgba(0,0,0,.08);
+    }
+    [data-theme="dark"]{
+      --bg:#0f1115; --card:#151822; --text:#e6e6e6; --muted:#a7acc0; --accent:#7aa2ff; --ok:#6ee7b7; --warn:#f87171; --code:#e6e6e6;
+      --shadow:0 6px 20px rgba(0,0,0,.5);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+    }
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(130%) blur(6px);
+      background:color-mix(in srgb, var(--bg) 70%, transparent);
+      border-bottom:1px solid color-mix(in srgb, var(--text) 12%, transparent);
+    }
+    .container{max-width:980px; margin:0 auto; padding:16px 20px;}
+    h1{margin:8px 0 12px; font-size:clamp(22px,3vw,32px)}
+    .muted{color:var(--muted); font-size:.95rem}
+    .toolbar{
+      display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin:8px 0 0;
+    }
+    .btn{
+      appearance:none; border:1px solid color-mix(in srgb, var(--text) 16%, transparent);
+      background:var(--card); color:var(--text);
+      padding:8px 12px; border-radius:10px; cursor:pointer; box-shadow:var(--shadow);
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+    .grid{display:grid; gap:18px}
+    @media(min-width:900px){ .grid{grid-template-columns: 1fr 320px} }
+    nav{
+      position:sticky; top:74px; align-self:start; padding:14px; border-radius:12px; background:var(--card); box-shadow:var(--shadow);
+    }
+    nav h3{margin-top:0}
+    nav a{display:block; text-decoration:none; color:var(--text); padding:4px 0; font-size:.95rem}
+    nav a:hover{color:var(--accent)}
+    section{
+      background:var(--card); padding:18px; border-radius:14px; box-shadow:var(--shadow); margin-bottom:18px
+    }
+    section h2{margin-top:0}
+    .actions{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 10px}
+    pre, code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    pre{
+      background:color-mix(in srgb, var(--card) 60%, #000 10%);
+      color:var(--code); padding:12px; border-radius:10px; overflow:auto; border:1px dashed color-mix(in srgb, var(--text) 18%, transparent)
+    }
+    .callout{
+      background:color-mix(in srgb, var(--card) 80%, #ffd 30%);
+      border-left:6px solid var(--accent); padding:10px 12px; border-radius:8px; margin:10px 0; color:var(--text)
+    }
+    .summary{border-top:1px dashed color-mix(in srgb, var(--text) 18%, transparent); margin-top:12px; padding-top:10px}
+    .summary h3{margin:.2rem 0 .4rem}
+    ul,ol{margin-top:.4rem}
+    .ok{color:var(--ok); font-weight:700}
+    .warn{color:var(--warn); font-weight:700}
+    #salida{
+      background:var(--card); border:1px solid color-mix(in srgb, var(--text) 14%, transparent);
+      padding:12px; border-radius:10px; min-height:48px; white-space:pre-wrap; font-family:inherit;
+    }
+    .pill{
+      display:inline-block; padding:2px 8px; border-radius:999px; background:color-mix(in srgb, var(--accent) 18%, transparent);
+      color:var(--text); font-size:.8rem; margin-left:6px
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Clase JavaScript para Cristina <span class="pill">Parte 1</span></h1>
+      <p class="muted">Interactividad básica del navegador: alertas, variables, condicionales, DOM, funciones, bucles, arrays y mini proyecto.</p>
+      <div class="toolbar">
+        <button class="btn" id="toggleTheme" aria-pressed="false">🌙 Modo oscuro</button>
+        <button class="btn" id="limpiarSalida">🧹 Limpiar salida</button>
+        <span class="muted">🧭 Consejo: abre la consola (F12) para ver los <em>console.log</em>.</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container grid" id="contenido">
+    <!-- Índice -->
+    <nav aria-label="Índice de contenidos">
+      <h3>Índice</h3>
+      <a href="#intro">0. Introducción</a>
+      <a href="#alert">1. alert()</a>
+      <a href="#vars">2. Variables</a>
+      <a href="#ifelse">3. Condicionales</a>
+      <a href="#dom">4. Cambiar texto (DOM)</a>
+      <a href="#funcs">5. Funciones con parámetros</a>
+      <a href="#loops">6. Bucles</a>
+      <a href="#arrays">7. Arrays</a>
+      <a href="#mini">🎯 Mini proyecto</a>
+      <hr/>
+      <h3>🧾 Salida</h3>
+      <div id="salida" aria-live="polite" aria-atomic="true">Aquí aparecerán resultados sin usar alert().</div>
+    </nav>
+
+    <div>
+      <!-- INTRO -->
+      <section id="intro">
+        <h2>📘 0. Introducción a JavaScript</h2>
+        <p><strong>HTML</strong> define el contenido, <strong>CSS</strong> el aspecto y <strong>JavaScript</strong> la interactividad.</p>
+        <div class="callout"><strong>Tip:</strong> Para pruebas rápidas usa <code>alert()</code>, <code>console.log()</code> y la caja de <strong>Salida</strong> de esta página.</div>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>JS corre en el navegador y puede reaccionar a clics, teclas o cambios en la página.</li>
+            <li>Prueba: escribe en la consola <code>1 + 2</code> y luego <code>document.title</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 1 ALERT -->
+      <section id="alert">
+        <h2>1. Mostrar un mensaje con <code>alert()</code></h2>
+        <p>Una alerta detiene la ejecución y muestra un mensaje.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="mostrarSaludo()">Haz clic para saludar</button>
+          <button class="btn" onclick="mostrarDespedida()">Despedida</button>
+        </div>
+<pre><code>// Esta función muestra un saludo en una ventana emergente
+function mostrarSaludo() {
+  alert("¡Hola Cinthia! Bienvenida a tu clase de JavaScript 🎉");
+}
+
+// TODO del alumno (ejemplo ya implementado a continuación):
+// Crea una función llamada mostrarDespedida() que muestre: "¡Hasta luego, Cinthia!"
+function mostrarDespedida() {
+  alert("¡Hasta luego, Cinthia!");
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li><span class="ok">OK</span> Para mensajes rápidos usa <code>alert()</code>.</li>
+            <li><span class="warn">Ojo</span> No abuses: bloquea la página hasta cerrar la ventana.</li>
+            <li>Ejercicio: crea <code>mostrarMotivacion()</code> con tu frase favorita.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2 VARIABLES -->
+      <section id="vars">
+        <h2>2. Variables: <code>let</code> y <code>const</code></h2>
+        <p><code>let</code> permite reasignar; <code>const</code> no (para referencias, no inmutabilidad profunda).</p>
+        <div class="actions">
+          <button class="btn primary" onclick="mostrarVariables()">Mostrar mis datos</button>
+          <button class="btn" onclick="ejVarColor()">Mi color favorito</button>
+        </div>
+<pre><code>function mostrarVariables() {
+  const nombre = "Cinthia";   // Constante (no cambiará la referencia)
+  const ciudad = "Madrid";
+  // Usa plantillas de texto para legibilidad:
+  alert(`Te llamas ${nombre} y estás en ${ciudad}`);
+}
+
+// TODO: Crea una variable llamada colorFavorito y muéstrala sin alert, en #salida.
+function ejVarColor() {
+  const colorFavorito = "verde";
+  escribirSalida(`Tu color favorito es: ${colorFavorito}`);
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>Usa <code>const</code> por defecto; cambia a <code>let</code> cuando necesites reasignar.</li>
+            <li>Ejercicio: declara <code>let edad = 26</code> y súmale 1, mostrando el resultado en la salida.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 IF/ELSE -->
+      <section id="ifelse">
+        <h2>3. Condicionales (<code>if</code> / <code>else</code>)</h2>
+        <p>Toman decisiones según condiciones verdaderas o falsas.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="evaluarEdad()">¿Mayor de edad?</button>
+          <button class="btn" onclick="masDe30()">¿Más de 30?</button>
+        </div>
+<pre><code>function evaluarEdad() {
+  // prompt devuelve texto; conviene convertir a número:
+  const entrada = prompt("¿Cuántos años tienes?");
+  const edad = Number(entrada);
+
+  if (Number.isNaN(edad)) {
+    alert("Introduce un número válido.");
+    return;
+  }
+
+  if (edad &gt;= 18) {
+    alert("Eres mayor de edad ✅");
+  } else if (edad &lt; 5) {
+    alert("Eres un bebé 👶");
+  } else {
+    alert("Eres menor de edad 🚫");
+  }
+}
+
+// TODO: función que diga si tienes más de 30 años:
+function masDe30() {
+  const edad = Number(prompt("Edad:"));
+  if (Number.isNaN(edad)) return alert("Valor no válido.");
+  const msg = edad &gt; 30 ? "Sí, más de 30" : "No, 30 o menos";
+  escribirSalida(msg);
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>Convierte texto a número con <code>Number()</code> o <code>parseInt()</code>.</li>
+            <li>Ejercicio: pide un número y di si es par o impar.</li>
+            <li>Bonus: clasifica edades: &lt;5 bebé, 5–12 niñez, 13–17 adolescencia, 18+ adulto.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 DOM -->
+      <section id="dom">
+        <h2>4. Cambiar texto del HTML (DOM)</h2>
+        <p>Con JS seleccionas y modificas nodos del documento.</p>
+        <p id="textoCambiante">Este texto va a cambiar.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="cambiarTexto()">Cambiar</button>
+          <button class="btn" onclick="cambiarExtra()">Cambiar mensaje extra</button>
+        </div>
+<pre><code>function cambiarTexto() {
+  // getElementById: selección directa
+  const p = document.getElementById("textoCambiante");
+  p.innerText = "¡Texto actualizado desde JavaScript!";
+}
+
+// TODO: Crea otro &lt;p id="mensajeExtra"&gt; y un botón que cambie su contenido.
+function cambiarExtra() {
+  let extra = document.getElementById("mensajeExtra");
+  if (!extra) {
+    extra = document.createElement("p");
+    extra.id = "mensajeExtra";
+    extra.textContent = "Mensaje extra inicial.";
+    document.querySelector("#dom").appendChild(extra);
+  } else {
+    extra.textContent = "Mensaje extra actualizado ✅";
+  }
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li><code>innerText</code> cambia texto; <code>innerHTML</code> interpreta HTML.</li>
+            <li>Ejercicio: crea un botón que añada un elemento <code>&lt;li&gt;</code> a una lista.</li>
+            <li>Bonus: alterna una clase CSS con <code>classList.toggle()</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 FUNCIONES -->
+      <section id="funcs">
+        <h2>5. Funciones con parámetros y <code>return</code></h2>
+        <p>Reutiliza lógica pasando valores a funciones.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="calcularMultiplicacion()">Calcular 3 × 4</button>
+          <button class="btn" onclick="restaInteractiva()">Resta interactiva</button>
+        </div>
+<pre><code>function multiplicar(a, b) {
+  // Buenas prácticas: validar
+  if (typeof a !== "number" || typeof b !== "number") {
+    throw new Error("multiplicar(a,b) requiere números");
+  }
+  return a * b;
+}
+
+function calcularMultiplicacion() {
+  const resultado = multiplicar(3, 4);
+  alert(`El resultado de 3 × 4 es: ${resultado}`);
+}
+
+// TODO: Crea una función que reste dos números y muestre el resultado.
+// BONUS: Pide los números con prompt()
+function restaInteractiva() {
+  const a = Number(prompt("Primer número:"));
+  const b = Number(prompt("Segundo número:"));
+  if ([a,b].some(Number.isNaN)) return alert("Introduce números válidos.");
+  escribirSalida(`Resultado de ${a} - ${b} = ${a - b}`);
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>Usa <code>return</code> para devolver valores reutilizables.</li>
+            <li>Ejercicio: función <code>areaRect(base, altura)</code> y úsala con datos del usuario.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 BUCLES -->
+      <section id="loops">
+        <h2>6. Bucles</h2>
+        <p>Repite acciones. En JS hay <code>for</code>, <code>while</code>, <code>for...of</code>, etc.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="bucleSimple()">Ver bucle 1→5</button>
+          <button class="btn" onclick="bucleInverso()">Ver bucle 5→1</button>
+        </div>
+<pre><code>function bucleSimple() {
+  for (let i = 1; i &lt;= 5; i++) {
+    console.log("Contador:", i);
+  }
+  escribirSalida("Bucle 1→5 enviado a la consola.");
+}
+
+// TODO: Cambia el bucle para que cuente de 5 a 1
+function bucleInverso() {
+  for (let i = 5; i &gt;= 1; i--) {
+    console.log("Contador inverso:", i);
+  }
+  escribirSalida("Bucle 5→1 enviado a la consola.");
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>Evita bucles infinitos: cambia la condición o el incremento.</li>
+            <li>Ejercicio: suma del 1 al N (pide N por <code>prompt</code>).</li>
+            <li>Bonus: imprime solo números pares entre 1 y 30.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 ARRAYS -->
+      <section id="arrays">
+        <h2>7. Arrays (listas)</h2>
+        <p>Guarda colecciones de valores y recórrelas con bucles o métodos específicos.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="verFrutas()">Mostrar frutas</button>
+          <button class="btn" onclick="animalesDemo()">Animales (push/shift)</button>
+        </div>
+<pre><code>function verFrutas() {
+  const frutas = ["manzana", "banana", "pera"];
+  frutas.push("kiwi"); // Añadimos una más
+
+  for (let i = 0; i &lt; frutas.length; i++) {
+    console.log(`Fruta ${i + 1}:`, frutas[i]);
+  }
+  escribirSalida("Frutas listadas en consola.");
+}
+
+// TODO: Crea un array de animales y muestra cada uno en consola.
+// BONUS: Elimina el primer elemento con shift()
+function animalesDemo() {
+  const animales = ["perro", "gato", "loro"];
+  console.log("Inicial:", animales);
+  animales.push("tortuga");
+  console.log("Tras push:", animales);
+  const eliminado = animales.shift();
+  console.log("Tras shift() (quitado:", eliminado + "):", animales);
+  escribirSalida("Operaciones con animales registradas en consola.");
+}</code></pre>
+        <div class="summary">
+          <h3>Resumen + Práctica</h3>
+          <ul>
+            <li>Métodos útiles: <code>push</code>, <code>pop</code>, <code>shift</code>, <code>unshift</code>, <code>includes</code>, <code>indexOf</code>, <code>slice</code>, <code>splice</code>, <code>map</code>, <code>filter</code>.</li>
+            <li>Ejercicio: pide 3 colores con <code>prompt</code>, guárdalos en un array y muéstralos con un bucle.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MINI PROYECTO -->
+      <section id="mini">
+        <h2>🎯 Mini proyecto: Tarjeta de presentación interactiva</h2>
+        <p>Aplica entradas de usuario, variables, condicionales, DOM, bucles y arrays.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="miProyecto()">Lanzar miProyecto()</button>
+          <button class="btn" onclick="resetTarjeta()">Reset tarjeta</button>
+        </div>
+        <div id="tarjeta" class="callout" style="min-height:48px;">Pulsa “Lanzar miProyecto()”.</div>
+<pre><code>// Objetivo: pedir nombre, edad, y varios colores favoritos; mostrar tarjeta personalizada.
+function miProyecto() {
+  const nombre = pedirTextoNoVacio("¿Tu nombre?");
+  if (!nombre) return;
+
+  const edadNum = pedirNumeroValido("¿Tu edad?");
+  if (edadNum === null) return;
+
+  // Pedimos 3 colores y los guardamos en un array
+  const colores = [];
+  for (let i = 1; i &lt;= 3; i++) {
+    const c = pedirTextoNoVacio(`Color favorito ${i}:`);
+    if (c) colores.push(c);
+  }
+
+  // Mensaje de bienvenida con condicional
+  const mayorEdad = edadNum &gt;= 18 ? "mayor de edad ✅" : "menor de edad 🚫";
+
+  // Mostramos tarjeta en el DOM
+  const tarjeta = document.getElementById("tarjeta");
+  tarjeta.innerHTML = `
+    &lt;strong&gt;Hola, ${nombre}&lt;/strong&gt; (edad: ${edadNum}, ${mayorEdad})&lt;br/&gt;
+    Tus colores favoritos: &lt;em&gt;${colores.join(", ")}&lt;/em&gt;
+  `;
+
+  // También en salida y consola
+  escribirSalida(\`Hola, \${nombre}. Eres \${mayorEdad}. Colores: \${colores.join(", ")}\`);
+  console.log("Colores:", colores);
+}
+
+// Utilidades de entrada robustas:
+function pedirTextoNoVacio(msg) {
+  const v = prompt(msg);
+  if (v === null) return null; // cancelado
+  const limpio = v.trim();
+  if (!limpio) { alert("Texto vacío. Intenta de nuevo."); return null; }
+  return limpio;
+}
+function pedirNumeroValido(msg) {
+  const v = prompt(msg);
+  if (v === null) return null; // cancelado
+  const n = Number(v);
+  if (Number.isNaN(n)) { alert("No es un número válido."); return null; }
+  return n;
+}
+function resetTarjeta(){
+  document.getElementById("tarjeta").textContent = "Pulsa “Lanzar miProyecto()”.";
+}</code></pre>
+        <div class="summary">
+          <h3>Checklist</h3>
+          <ul>
+            <li>✅ Entradas con <code>prompt()</code> y validación.</li>
+            <li>✅ Variables y condicionales.</li>
+            <li>✅ Manipulación del DOM con <code>innerHTML</code>.</li>
+            <li>✅ Arrays y bucles.</li>
+          </ul>
+          <h3>Extensiones (opcional)</h3>
+          <ul>
+            <li>Guarda el nombre en <code>localStorage</code> y recupéralo al recargar la página.</li>
+            <li>Crea un botón para añadir más colores dinámicamente.</li>
+            <li>Muestra los colores como una lista &lt;ul&gt; con un bucle.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // ===== Utilidades de UI =====
+    const salida = document.getElementById("salida");
+    function escribirSalida(texto) {
+      if (!salida) return;
+      const ahora = new Date().toLocaleTimeString();
+      salida.textContent = `[${ahora}] ${texto}\n` + (salida.textContent || "");
+    }
+    document.getElementById("limpiarSalida")?.addEventListener("click", () => {
+      salida.textContent = "Aquí aparecerán resultados sin usar alert().";
+    });
+
+    // Modo oscuro
+    const btnTheme = document.getElementById("toggleTheme");
+    btnTheme?.addEventListener("click", () => {
+      const dark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+      btnTheme.setAttribute("aria-pressed", String(!dark));
+      btnTheme.textContent = dark ? "🌙 Modo oscuro" : "☀️ Modo claro";
+    });
+
+    // ===== Ejemplos de cada sección (con pequeñas mejoras de robustez) =====
+    function mostrarSaludo() {
+      alert("¡Hola Cinthia! Bienvenida a tu clase de JavaScript 🎉");
+    }
+    function mostrarDespedida() {
+      alert("¡Hasta luego, Cinthia!");
+    }
+
+    function mostrarVariables() {
+      const nombre = "Cinthia";
+      const ciudad = "Madrid";
+      alert(`Te llamas ${nombre} y estás en ${ciudad}`);
+    }
+    function ejVarColor() {
+      const colorFavorito = "verde";
+      escribirSalida(`Tu color favorito es: ${colorFavorito}`);
+    }
+
+    function evaluarEdad() {
+      const entrada = prompt("¿Cuántos años tienes?");
+      const edad = Number(entrada);
+      if (Number.isNaN(edad)) return alert("Introduce un número válido.");
+      if (edad >= 18) {
+        alert("Eres mayor de edad ✅");
+      } else if (edad < 5) {
+        alert("Eres un bebé 👶");
+      } else {
+        alert("Eres menor de edad 🚫");
+      }
+    }
+    function masDe30() {
+      const edad = Number(prompt("Edad:"));
+      if (Number.isNaN(edad)) return alert("Valor no válido.");
+      const msg = edad > 30 ? "Sí, más de 30" : "No, 30 o menos";
+      escribirSalida(msg);
+    }
+
+    function cambiarTexto() {
+      const p = document.getElementById("textoCambiante");
+      p.innerText = "¡Texto actualizado desde JavaScript!";
+    }
+    function cambiarExtra() {
+      let extra = document.getElementById("mensajeExtra");
+      if (!extra) {
+        extra = document.createElement("p");
+        extra.id = "mensajeExtra";
+        extra.textContent = "Mensaje extra inicial.";
+        document.querySelector("#dom").appendChild(extra);
+      } else {
+        extra.textContent = "Mensaje extra actualizado ✅";
+      }
+    }
+
+    function multiplicar(a, b) {
+      if (typeof a !== "number" || typeof b !== "number") {
+        throw new Error("multiplicar(a,b) requiere números");
+      }
+      return a * b;
+    }
+    function calcularMultiplicacion() {
+      const resultado = multiplicar(3, 4);
+      alert(`El resultado de 3 × 4 es: ${resultado}`);
+    }
+    function restaInteractiva() {
+      const a = Number(prompt("Primer número:"));
+      const b = Number(prompt("Segundo número:"));
+      if ([a,b].some(Number.isNaN)) return alert("Introduce números válidos.");
+      escribirSalida(`Resultado de ${a} - ${b} = ${a - b}`);
+    }
+
+    function bucleSimple() {
+      for (let i = 1; i <= 5; i++) {
+        console.log("Contador:", i);
+      }
+      escribirSalida("Bucle 1→5 enviado a la consola.");
+    }
+    function bucleInverso() {
+      for (let i = 5; i >= 1; i--) {
+        console.log("Contador inverso:", i);
+      }
+      escribirSalida("Bucle 5→1 enviado a la consola.");
+    }
+
+    function verFrutas() {
+      const frutas = ["manzana", "banana", "pera"];
+      frutas.push("kiwi");
+      for (let i = 0; i < frutas.length; i++) {
+        console.log(`Fruta ${i + 1}:`, frutas[i]);
+      }
+      escribirSalida("Frutas listadas en consola.");
+    }
+    function animalesDemo() {
+      const animales = ["perro", "gato", "loro"];
+      console.log("Inicial:", animales);
+      animales.push("tortuga");
+      console.log("Tras push:", animales);
+      const eliminado = animales.shift();
+      console.log("Tras shift() (quitado:", eliminado + "):", animales);
+      escribirSalida("Operaciones con animales registradas en consola.");
+    }
+
+    function miProyecto() {
+      const nombre = pedirTextoNoVacio("¿Tu nombre?");
+      if (!nombre) return;
+      const edadNum = pedirNumeroValido("¿Tu edad?");
+      if (edadNum === null) return;
+
+      const colores = [];
+      for (let i = 1; i <= 3; i++) {
+        const c = pedirTextoNoVacio(`Color favorito ${i}:`);
+        if (c) colores.push(c);
+      }
+      const mayorEdad = edadNum >= 18 ? "mayor de edad ✅" : "menor de edad 🚫";
+      const tarjeta = document.getElementById("tarjeta");
+      tarjeta.innerHTML = `
+        <strong>Hola, ${nombre}</strong> (edad: ${edadNum}, ${mayorEdad})<br/>
+        Tus colores favoritos: <em>${colores.join(", ")}</em>
+      `;
+      escribirSalida(`Hola, ${nombre}. Eres ${mayorEdad}. Colores: ${colores.join(", ")}`);
+      console.log("Colores:", colores);
+    }
+    function pedirTextoNoVacio(msg) {
+      const v = prompt(msg);
+      if (v === null) return null;
+      const limpio = v.trim();
+      if (!limpio) { alert("Texto vacío. Intenta de nuevo."); return null; }
+      return limpio;
+    }
+    function pedirNumeroValido(msg) {
+      const v = prompt(msg);
+      if (v === null) return null;
+      const n = Number(v);
+      if (Number.isNaN(n)) { alert("No es un número válido."); return null; }
+      return n;
+    }
+    function resetTarjeta(){
+      document.getElementById("tarjeta").textContent = "Pulsa “Lanzar miProyecto()”.";
+    }
+  </script>
+</body>
+</html>
