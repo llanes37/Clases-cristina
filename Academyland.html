@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia SCROOM</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS Animaciones -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* Hero con video IA */
+    header.hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden;
+      background: #000;
+    }
+    header.hero iframe, 
+    header.hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.8;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .btn-hero {
+      padding: 12px 30px;
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 80px 0;
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">SCROOM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero con Avatar IA -->
+  <header class="hero">
+    <!-- Opciones: sustituye la URL por tu avatar IA -->
+    <iframe src="https://player.d-id.com/ejemplo-avatar" 
+            allow="camera *; microphone *; autoplay *; encrypted-media *;" 
+            frameborder="0">
+    </iframe>
+    
+    <div class="hero-content container" data-aos="zoom-in">
+      <h1>Bienvenido a SCROOM</h1>
+      <p class="lead">Tu academia online con tutora virtual</p>
+      <a href="#cursos" class="btn btn-primary btn-hero shadow">Explorar Cursos</a>
+    </div>
+  </header>
+
+  <!-- Cursos -->
+  <section id="cursos">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Cursos</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-right">
+          <div class="card h-100 shadow">
+            <img src="https://picsum.photos/400/250?random=10" class="card-img-top" alt="Curso 1">
+            <div class="card-body">
+              <h5 class="card-title">Programación Web</h5>
+              <p>Aprende a crear páginas modernas con HTML, CSS y JS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card h-100 shadow">
+            <img src="https://picsum.photos/400/250?random=11" class="card-img-top" alt="Curso 2">
+            <div class="card-body">
+              <h5 class="card-title">Marketing Digital</h5>
+              <p>Domina SEO, SEM y redes sociales para tu negocio.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-left">
+          <div class="card h-100 shadow">
+            <img src="https://picsum.photos/400/250?random=12" class="card-img-top" alt="Curso 3">
+            <div class="card-body">
+              <h5 class="card-title">Diseño Gráfico</h5>
+              <p>Crea imágenes impactantes con herramientas modernas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">Lo que dicen nuestros alumnos</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="flip-left">
+          <blockquote class="blockquote">
+            <p>“Gracias a SCROOM conseguí mi primer empleo como programador.”</p>
+            <footer class="blockquote-footer">Carlos M.</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4" data-aos="flip-up">
+          <blockquote class="blockquote">
+            <p>“La tutora virtual hace que aprender sea mucho más fácil.”</p>
+            <footer class="blockquote-footer">Laura G.</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4" data-aos="flip-right">
+          <blockquote class="blockquote">
+            <p>“Los cursos son completos y están muy bien explicados.”</p>
+            <footer class="blockquote-footer">Javier R.</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section id="precios">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Planes</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Básico</h5>
+              <p>Acceso a 5 cursos</p>
+              <h3>19€/mes</h3>
+              <a href="#" class="btn btn-outline-primary">Elegir</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card text-center shadow border-primary">
+            <div class="card-body">
+              <h5 class="card-title">Pro</h5>
+              <p>Acceso total + tutora virtual</p>
+              <h3>39€/mes</h3>
+              <a href="#" class="btn btn-primary">Elegir</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <h5 class="card-title">Premium</h5>
+              <p>Ilimitado + certificado oficial</p>
+              <h3>59€/mes</h3>
+              <a href="#" class="btn btn-outline-primary">Elegir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">Contáctanos</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form data-aos="fade-up">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 SCROOM - Academia Online. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

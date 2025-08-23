@@ -90,7 +90,7 @@ SECCIÓN 1: alert()
     // Función que muestra un saludo en una ventana emergente.
     // Las funciones en JS se declaran con "function" y un nombre descriptivo.
     function mostrarSaludo() {
-      alert("¡Hola Cinthia! Bienvenida a tu clase de JavaScript 🎉");
+      alert("¡Hola Cristina! Bienvenida a tu clase de JavaScript 🎉");
     }
   </script>
 
@@ -120,14 +120,16 @@ SECCIÓN 2: VARIABLES
   <button onclick="mostrarVariables()">Mostrar mis datos</button>
 
   <script>
-    function mostrarVariables() {
-      let nombre = "Cinthia";     // Guardamos un nombre (puede cambiar)
-      const ciudad = "Madrid";    // Constante con la ciudad (no cambia)
-      
-      // Concatenación con + (también puedes usar template string con backticks)
-      alert("Te llamas " + nombre + " y estás en " + ciudad);
-    }
-  </script>
+    function mostrarVariables() {
+      let nombre = "Cristina"; 
+      let ciudad = "Girona"; 
+      let apellido = "Da Silva"; 
+      let edad = 42; 
+      
+      // Concatenación con + (también puedes usar template string con backticks)
+      alert("Te llamas " + nombre + " " + apellido + ", vives en " + ciudad + " y tienes " + edad + " años.")
+    }
+</script>
 
   <h3>🧪 Tu turno</h3>
   <p>
@@ -152,21 +154,47 @@ SECCIÓN 3: CONDICIONALES
       }
   -->
   <button onclick="evaluarEdad()">¿Mayor de edad?</button>
+  <button onclick="verificarAccesoCarrera()">Acceso Carrera</button>
 
-  <script>
-    function evaluarEdad() {
-      let edad = prompt("¿Cuántos años tienes?"); // prompt devuelve texto
-      edad = Number(edad); // Convertimos a número para comparar
+<script>
+  function evaluarEdad() {
+    let edad = prompt("¿Cuántos años tienes?"); // prompt devuelve texto
+    edad = Number(edad); // Convertimos a número para comparar
 
-      if (edad >= 18) {
-        alert("Eres mayor de edad ✅");
-      } else if (edad < 5) {
-        alert("Eres un bebé 👶");
-      } else {
-        alert("Eres menor de edad 🚫");
-      }
+    if (edad == 20) {
+      alert("¡Entrada Gratis! 🎉");
+    } else if (edad >= 18) {
+      alert("Puedes entrar a la Discoteca ✅");
+    } else {
+      alert("Eres menor de edad 🚫");
     }
-  </script>
+  }
+</script>
+<script>
+  function verificarAccesoCarrera() {
+    let estudios = prompt("¿Qué estudios tienes? (ESO, Bachillerato, Curso Profesional)");
+
+    // Convertimos la respuesta a minúsculas para que no importe cómo la escriba el usuario
+    estudios = estudios.toLowerCase();
+
+    if (estudios === "eso") {
+      alert("Lo sentimos, con el ESO no puedes acceder a la carrera. 🚫");
+    } else if (estudios === "bachillerato") {
+      alert("¡Enhorabuena! Con el Bachillerato puedes acceder a la carrera. ✅");
+    } else if (estudios === "curso profesional") {
+      let nota = prompt("¿Qué nota media tienes en el Curso Profesional?");
+      nota = Number(nota); // Convertimos la nota a un número
+
+      if (nota >= 8) {
+        alert("¡Enhorabuena! Con una nota de " + nota + " puedes acceder a la carrera. ✅");
+      } else {
+        alert("Lo sentimos, tu nota media (" + nota + ") no es suficiente. Necesitas un 8 o más. 🚫");
+      }
+    } else {
+      alert("Opción no válida. Por favor, introduce ESO, Bachillerato o Curso Profesional.");
+    }
+  }
+</script>
 
   <h3>🧪 Tu turno</h3>
   <ul>
@@ -180,23 +208,27 @@ SECCIÓN 4: CAMBIAR TEXTO DEL HTML
 ===================================================== -->
 <section>
   <h2>4. Cambiar texto del HTML</h2>
-  <!--
-    Podemos cambiar el contenido de un elemento HTML usando:
-      document.getElementById("id").innerText = "Nuevo texto";
-  -->
-  <p id="textoCambiante">Este texto va a cambiar.</p>
+  <p id="textoCambiante">Hola soy Cristina y he venido a estudiar.</p>
   <button onclick="cambiarTexto()">Cambiar</button>
 
   <script>
     function cambiarTexto() {
-      // Seleccionamos el párrafo por su id y cambiamos su texto
-      document.getElementById("textoCambiante").innerText = "¡Texto actualizado desde JavaScript!";
+      // Seleccionamos el párrafo por su id
+      let parrafo = document.getElementById("textoCambiante");
+
+      // 1. Cambiamos el contenido por una imagen, usando .innerHTML
+      parrafo.innerHTML = '<img src="https://i.pinimg.com/originals/5f/38/50/5f38507930185f5e15c064fa16a0ae8e.jpg">'
+      // 2. Cambiamos el color de fondo a verde
+      parrafo.style.backgroundColor = "green";
+
+      // 3. Cambiamos el color de la letra a blanco
+      parrafo.style.color = "white";
     }
   </script>
 
   <h3>🧪 Tu turno</h3>
   <p>
-    // TODO: Crea otro <code>&lt;p&gt;</code> con id="mensajeExtra"  
+    // TODO: Crea otro <code>&lt;p&gt;</code> con id="mensajeExtra"
     // y un botón que cambie su contenido cuando lo pulses.
   </p>
 </section>
@@ -205,59 +237,91 @@ SECCIÓN 4: CAMBIAR TEXTO DEL HTML
 SECCIÓN 5: FUNCIONES CON PARÁMETROS
 ===================================================== -->
 <section>
-  <h2>5. Funciones con parámetros</h2>
-  <!--
-    Los parámetros son valores que se pasan a la función para que los use.
-    return devuelve un valor al lugar donde se llamó la función.
-  -->
-  <button onclick="calcularMultiplicacion()">Calcular 3 x 4</button>
+  <h2>5. Calculadora Sencilla</h2>
+  
+  <p>Introduce dos números para calcular:</p>
+  
+  <input type="number" id="numero1">
+  <input type="number" id="numero2">
+  
+  <br><br>
+  
+  <button onclick="Multiplicar()">Multiplicar</button>
+  <button onclick="restar()">Restar</button>
+  
+  <p>El resultado es: <span id="resultado"></span></p>
 
   <script>
-    // Función que recibe dos números y devuelve su multiplicación
-    function multiplicar(a, b) {
-      return a * b;
+    function Multiplicar() {
+      // 1. Obtenemos los valores de los campos de texto
+      //    .value devuelve el texto, así que usamos Number() para convertirlo a un número.
+      let num1 = Number(document.getElementById("numero1").value);
+      let num2 = Number(document.getElementById("numero2").value);
+      
+      // 2. Realizamos la multiplicar
+      let resultado = num1 * num2;
+      
+      // 3. Mostramos el resultado en el elemento con id="resultado"
+      document.getElementById("resultado").innerText = resultado;
     }
-
-    function calcularMultiplicacion() {
-      let resultado = multiplicar(3, 4);
-      alert("El resultado de 3 x 4 es: " + resultado);
+    
+    function restar() {
+      // 1. Obtenemos los valores de los campos de texto
+      let num1 = Number(document.getElementById("numero1").value);
+      let num2 = Number(document.getElementById("numero2").value);
+      
+      // 2. Realizamos la resta
+      let resultado = num1 - num2;
+      
+      // 3. Mostramos el resultado
+      document.getElementById("resultado").innerText = resultado;
     }
   </script>
-
-  <h3>🧪 Tu turno</h3>
-  <ul>
-    <li>// TODO: Crea una función que reste dos números y muestre el resultado con alert.</li>
-    <li>// BONUS: Haz que pida al usuario los dos números con prompt().</li>
-  </ul>
 </section>
 
 <!-- =====================================================
 SECCIÓN 6: BUCLES
 ===================================================== -->
 <section>
-  <h2>6. Bucles</h2>
-  <!--
-    Un bucle repite código varias veces.
-    Ejemplo con for:
-      for (let i = 1; i <= 5; i++) {
-        // código repetido
-      }
-  -->
-  <button onclick="bucleSimple()">Ver bucle</button>
+    <h2>Casas Disponibles</h2>
+    <p>Haz clic en el botón para ver todas las casas:</p>
+    <button onclick="mostrarTodasLasCasas()">Ver todas las casas</button>
+    <div id="listaDeCasas">
+        </div>
 
-  <script>
-    function bucleSimple() {
-      for (let i = 1; i <= 5; i++) {
-        console.log("Contador:", i); // Muestra en la consola del navegador
-      }
-    }
-  </script>
+    <script>
+        // Simulamos una base de datos de casas como un array de objetos
+        let casasDisponibles = [
+            { nombre: "Casa en la playa", precio: 120000 },
+            { nombre: "Piso en el centro", precio: 75000 },
+            { nombre: "Villa con jardín", precio: 250000 },
+            { nombre: "Apartamento pequeño", precio: 60000 },
+            { nombre: "Casa de campo", precio: 150000 }
+        ];
 
-  <h3>🧪 Tu turno</h3>
-  <p>
-    // TODO: Cambia el bucle para que cuente de 5 a 1 (al revés).  
-    // BONUS: Muestra solo los números pares.
-  </p>
+        function mostrarTodasLasCasas() {
+            // Obtenemos el elemento donde mostraremos los resultados
+            let contenedor = document.getElementById("listaDeCasas");
+            // Limpiamos el contenido anterior
+            contenedor.innerHTML = '';
+
+            // Usamos un bucle para recorrer cada casa en el array
+            for (let i = 0; i < casasDisponibles.length; i++) {
+                let casa = casasDisponibles[i];
+
+                // Creamos un nuevo párrafo con la información completa
+                let parrafo = document.createElement("p");
+                parrafo.innerText = `🏠 ${casa.nombre} - ${casa.precio}€`;
+                
+                // Añadimos el nuevo párrafo al contenedor
+                contenedor.appendChild(parrafo);
+            }
+
+            if (casasDisponibles.length === 0) {
+                 contenedor.innerText = "No hay casas disponibles en este momento.";
+            }
+        }
+    </script>
 </section>
 
 <!-- =====================================================
@@ -271,19 +335,45 @@ SECCIÓN 7: ARRAYS
       let frutas = ["manzana", "banana"];
       frutas.push("pera"); // añade al final
   -->
-  <button onclick="verFrutas()">Mostrar frutas</button>
+  <button onclick="verAmigasYEdades()">Mostrar frutas</button>
 
-  <script>
-    function verFrutas() {
-      let frutas = ["manzana", "banana", "pera"];
-      frutas.push("kiwi"); // Añadimos una más
+<script>
+  function verAmigasYEdades() {
+    // Creamos un array de objetos con el nombre y la edad de cada amiga
+    let amigas = [
+      { nombre: "Sofía", edad: 30 },
+      { nombre: "María", edad: 34 },
+      { nombre: "Laura", edad: 31 },
+      { nombre: "Ana", edad: 35 },
+      { nombre: "Carmen", edad: 32 },
+      { nombre: "Elena", edad: 33 },
+      { nombre: "Isabel", edad: 30 },
+      { nombre: "Julia", edad: 34 }
+    ];
 
-      // Recorremos el array con un bucle for
-      for (let i = 0; i < frutas.length; i++) {
-        console.log("Fruta " + (i + 1) + ":", frutas[i]);
+    let mayoresDe32 = [];
+    let menoresOIgualesA32 = [];
+
+    // Recorremos el array de amigas
+    for (let i = 0; i < amigas.length; i++) {
+      let amiga = amigas[i];
+
+      // Verificamos si la edad es mayor de 32
+      if (amiga.edad > 32) {
+        mayoresDe32.push(amiga.nombre);
+      } else {
+        menoresOIgualesA32.push(amiga.nombre);
       }
     }
-  </script>
+
+    // Mostramos los resultados en la consola y en un alert
+    console.log("Amigas de más de 32 años:", mayoresDe32);
+    console.log("Amigas de 32 años o menos:", menoresOIgualesA32);
+
+    alert("Amigas con más de 32 años: " + mayoresDe32.join(", "));
+    alert("Amigas con 32 años o menos: " + menoresOIgualesA32.join(", "));
+  }
+</script>
 
   <h3>🧪 Tu turno</h3>
   <ul>

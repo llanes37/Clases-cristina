@@ -18,6 +18,35 @@
             margin: 0; /* Eliminar márgenes predeterminados */
             padding: 0; /* Eliminar relleno predeterminado */
         }
+                /* Sección de fotos */
+        #fotos {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid purple;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        #fotos h2 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: purple;
+        }
+
+        .texto-fotos {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 18px;
+            color: purple;
+            margin-bottom: 15px;
+        }
+
+        .imagen-mar {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid purple;
+        }
+
 
         /* Estilos para el encabezado principal */
         header {
@@ -74,6 +103,12 @@
             color: white; /* Texto en blanco */
             margin-bottom: 10px; /* Espacio entre cajas */
         }
+        .caja-amarillo {
+            background-color: rgb(211, 247, 83); /* Fondo verde */
+            padding: 10px; /* Relleno interno */
+            color: white; /* Texto en blanco */
+            margin-bottom: 10px; /* Espacio entre cajas */
+        }    
 
         /* Estilos tipográficos */
         .tipografia-courier {
@@ -88,7 +123,7 @@
 
         /* Resaltado de texto */
         .resaltado {
-            background-color: yellow; /* Fondo amarillo */
+            background-color: rgb(21, 231, 77); /* Fondo amarillo */
             font-weight: bold; /* Texto en negrita */
         }
 
@@ -130,6 +165,7 @@
         <div class="caja-roja">Caja con fondo rojo</div>
         <div class="caja-azul">Caja con fondo azul</div>
         <div class="caja-verde">Caja con fondo verde</div>
+        <div class="caja-amarillo">Caja con fondo amarillo</div>
         <!-- 
         Explicación para el profesor:
         - background-color: cambia el color de fondo del elemento.
@@ -141,7 +177,7 @@
 
     <!-- Sección sobre tipografía en CSS -->
     <section id="tipografia">
-        <h2>Tipografía</h2>
+        <h2 class="resaltado">Tipografía</h2>
         <p>CSS nos permite personalizar la fuente de los textos en nuestras páginas.</p>
         <p class="tipografia-courier">Este texto está en la fuente Courier, con un tamaño de 20px.</p>
         <p class="tipografia-verdana">Este texto está en la fuente Verdana, con un tamaño de 18px.</p>
@@ -158,7 +194,7 @@
     <section id="modelo-caja">
         <h2>Modelo de Caja</h2>
         <p>El modelo de caja en CSS es fundamental para entender cómo se estructuran los elementos en la página. Cada elemento HTML se trata como una caja que tiene contenido, relleno (padding), borde (border) y margen (margin).</p>
-        <div class="modelo-caja">
+        <div class="resaltado" >
             Esta caja tiene margen, relleno, borde y un fondo claro.
         </div>
         <!-- 
@@ -168,6 +204,13 @@
         - border: define el grosor y color del borde alrededor del contenido.
         -->
     </section>
+        <!-- Sección de Fotos -->
+    <section id="fotos">
+        <h2>Fotos</h2>
+        <p class="texto-fotos">Una hermosa vista del mar para relajar la mente.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Ocean_waves.jpg" alt="Foto del mar" class="imagen-mar">
+    </section>
+
 
 </body>
 </html>

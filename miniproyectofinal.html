@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Proyecto Final</title>
+</head>
+<body>
+    <h1 style="font-family: 'Comic Sans MS', cursive; font-size: 33px; color: blueviolet;">
+        Mi Mini Proyecto Final (by Kris)
+    </h1>
+     <section>
+  <h2> Mi Proyecto </h2>
+  <p> Primera prueba:</p>
+  <button onclick="mostrarSaludo()">Haz clic aquí</button>
+
+  <script>
+    // Función que muestra un saludo en una ventana emergente.
+    // Las funciones en JS se declaran con "function" y un nombre descriptivo.
+    function mostrarSaludo() {
+      alert("¡Hola soy Kris! ¿Qué tal estás?");
+    }
+  </script>
+
+</section>
+<section>
+  <h2>Encuesta</h2>
+  <p> Responde a las preguntas:</p>
+  
+  <button onclick="preguntarDatos()"> Empezar</button>
+
+  <script>
+    function preguntarDatos() {
+      // 1. Preguntamos el nombre
+      let nombre = prompt("¿Cómo te llamas?");
+
+      // 2. Preguntamos la edad
+      let edad = prompt("¿Cuántos años tienes?");
+
+      // 3. Preguntamos el color favorito
+      let colorFavorito = prompt("¿Cuál es tu color favorito?");
+
+      // Opcional: Mostramos los datos en una sola alerta al final
+      alert("¡Hola, " + nombre + "! Tienes " + edad + " años y tu color favorito es el " + colorFavorito + ".");
+    }
+  </script>
+</section>
+<section>
+  <h2>Saludo Personalizado</h2>
+  <p>Haz clic en el botón para ver un saludo en una ventana emergente.</p>
+  
+  <button onclick="mostrarSaludo()">Ver Saludo</button>
+
+  <script>
+    function mostrarSaludo() {
+      // Puedes cambiar estos datos por los que quieras
+      let nombre = "Kris";
+      let edad = 42;
+
+      // Creamos el mensaje y lo mostramos en un alert
+      alert("Hola, me llamo " + nombre + " y tengo " + edad + " años.");
+    }
+  </script>
+</section>
+<section>
+  <h2>Cambiar texto</h2>
+  <p id="textoCambiante">Esto no es un exámen.</p>
+  <button onclick="cambiarTexto()">Cambiar</button>
+
+  <script>
+    function cambiarTexto() {
+      // Seleccionamos el párrafo por su id
+      let parrafo = document.getElementById("textoCambiante");
+
+      // 1. Cambiamos el contenido por una imagen, usando .innerHTML
+      parrafo.innerHTML = '<img src="https://i.pinimg.com/736x/7d/03/1d/7d031d9112aba2292f2d9237aecc6623.jpg">'
+      // 2. Cambiamos el color de fondo a verde
+      parrafo.style.backgroundColor = "purpel";
+
+      // 3. Cambiamos el color de la letra a blanco
+      parrafo.style.color = "white";
+    }
+  </script>
+
+  <h3>
+</section>
+<section>
+  <h2>Arrays (listas)</h2>
+  <p>Haz clic en el botón para ver la lista de colores en la consola y en un alert.</p>
+  
+  <button onclick="verColores()">Ver colores</button>
+
+  <script>
+    function verColores() {
+      let colores = ["Rojo", "Verde", "Azul", "Amarillo"];
+
+      // Añadimos un color al final del array
+      colores.push("Morado"); 
+      
+      // Eliminamos el primer color del array
+      colores.shift(); 
+
+      // Recorremos el array actualizado y mostramos cada color
+      for (let i = 0; i < colores.length; i++) {
+        console.log("Color " + (i + 1) + ": " + colores[i]);
+      }
+      
+      // También puedes mostrar el array completo en un alert
+      alert("Lista de colores final: " + colores.join(", "));
+    }
+  </script>
+
+  
+</section>
+<section>
+    <h2>Colores Disponibles</h2>
+    <p>Haz clic en el botón para ver la lista de colores:</p>
+    <button onclick="mostrarTodosLosColores()">Ver todos los colores</button>
+    <div id="listaDeColores">
+        </div>
+
+    <script>
+        // Array de colores simples
+        let coloresDisponibles = [
+            "Rojo",
+            "Azul",
+            "Verde",
+            "Amarillo",
+            "Morado",
+            "Naranja"
+        ];
+
+        function mostrarTodosLosColores() {
+            // Obtenemos el elemento donde mostraremos los resultados
+            let contenedor = document.getElementById("listaDeColores");
+            // Limpiamos el contenido anterior
+            contenedor.innerHTML = '';
+
+            // Usamos un bucle para recorrer cada color en el array
+            for (let i = 0; i < coloresDisponibles.length; i++) {
+                let color = coloresDisponibles[i];
+
+                // Creamos un nuevo párrafo con el nombre del color
+                let parrafo = document.createElement("p");
+                parrafo.innerText = `🎨 ${color}`;
+                
+                // Opcional: También puedes cambiar el color del texto para que coincida con el nombre
+                parrafo.style.color = color;
+                
+                // Añadimos el nuevo párrafo al contenedor
+                contenedor.appendChild(parrafo);
+            }
+
+            if (coloresDisponibles.length === 0) {
+                contenedor.innerText = "No hay colores disponibles.";
+            }
+        }
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,184 @@
+import React, { useState } from 'react';
+
+const steps = [
+  {
+    id: 'age',
+    label: '¿Cuál es tu edad?',
+    inputType: 'number',
+    placeholder: 'Ejemplo: 30',
+    validate: (val) => val >= 10 && val <= 120,
+    errorMsg: 'Edad debe estar entre 10 y 120 años.',
+  },
+  {
+    id: 'weight',
+    label: '¿Cuánto pesas? (kg)',
+    inputType: 'number',
+    placeholder: 'Ejemplo: 70',
+    validate: (val) => val > 20 && val < 500,
+    errorMsg: 'Peso inválido.',
+  },
+  {
+    id: 'goal',
+    label: '¿Cuál es tu objetivo?',
+    inputType: 'select',
+    options: [
+      { value: '', label: 'Selecciona...' },
+      { value: 'lose', label: 'Bajar de peso' },
+      { value: 'maintain', label: 'Mantener peso' },
+      { value: 'gain', label: 'Subir de peso' },
+    ],
+    validate: (val) => val !== '',
+    errorMsg: 'Selecciona un objetivo.',
+  },
+];
+
+function DietWizard() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [formValues, setFormValues] = useState({
+    age: '',
+    weight: '',
+    goal: '',
+  });
+  const [error, setError] = useState('');
+  const [plan, setPlan] = useState(null);
+
+  const step = steps[currentStep];
+
+  const handleNext = () => {
+    if (!step.validate(formValues[step.id])) {
+      setError(step.errorMsg);
+      return;
+    }
+    setError('');
+    if (currentStep === steps.length - 1) {
+      generatePlan();
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handleBack = () => {
+    setError('');
+    if (currentStep > 0) setCurrentStep(currentStep - 1);
+  };
+
+  const generatePlan = () => {
+    const age = parseInt(formValues.age, 10);
+    const weight = parseFloat(formValues.weight);
+    const goal = formValues.goal;
+
+    let generatedPlan = `Tu plan personalizado:\n\n`;
+
+    if (age < 18) {
+      generatedPlan += "- Jóvenes: dieta rica en calcio y proteínas.\n";
+    } else if (age <= 50) {
+      generatedPlan += "- Adulto activo: dieta equilibrada con frutas, verduras y proteínas.\n";
+    } else {
+      generatedPlan += "- Mayor a 50: dieta baja en grasas saturadas y alta en fibra.\n";
+    }
+
+    if (goal === 'lose') {
+      generatedPlan += "Objetivo: Bajar peso — reduce calorías, evita azúcares y grasas.\n";
+    } else if (goal === 'maintain') {
+      generatedPlan += "Objetivo: Mantener peso — come balanceado y mantente activo.\n";
+    } else if (goal === 'gain') {
+      generatedPlan += "Objetivo: Subir peso — incrementa ingesta calórica y proteínas.\n";
+    }
+
+    setPlan(generatedPlan);
+  };
+
+  return (
+    <div style={{ maxWidth: 400, margin: '2rem auto', fontFamily: 'Arial, sans-serif', padding: 20, border: '1px solid #ccc', borderRadius: 10 }}>
+      <h2>Planificador de Dietas</h2>
+      {!plan ? (
+        <>
+          <div style={{ marginBottom: 10 }}>
+            <label htmlFor={step.id} style={{ display: 'block', marginBottom: 6, fontWeight: 'bold' }}>
+              {step.label}
+            </label>
+            {step.inputType === 'select' ? (
+              <select
+                id={step.id}
+                value={formValues[step.id]}
+                onChange={(e) => setFormValues({ ...formValues, [step.id]: e.target.value })}
+                style={{ width: '100%', padding: 8, fontSize: 16, borderRadius: 6, borderColor: '#ccc' }}
+              >
+                {step.options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                id={step.id}
+                type={step.inputType}
+                placeholder={step.placeholder}
+                value={formValues[step.id]}
+                onChange={(e) => setFormValues({ ...formValues, [step.id]: e.target.value })}
+                style={{ width: '100%', padding: 8, fontSize: 16, borderRadius: 6, borderColor: '#ccc' }}
+              />
+            )}
+          </div>
+          {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
+
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <button
+              onClick={handleBack}
+              disabled={currentStep === 0}
+              style={{
+                padding: '10px 20px',
+                background: currentStep === 0 ? '#ccc' : '#3a8ef7',
+                color: 'white',
+                border: 'none',
+                borderRadius: 6,
+                cursor: currentStep === 0 ? 'not-allowed' : 'pointer',
+              }}
+            >
+              Atrás
+            </button>
+            <button
+              onClick={handleNext}
+              style={{
+                padding: '10px 20px',
+                background: '#3a8ef7',
+                color: 'white',
+                border: 'none',
+                borderRadius: 6,
+                cursor: 'pointer',
+              }}
+            >
+              {currentStep === steps.length - 1 ? 'Generar Plan' : 'Siguiente'}
+            </button>
+          </div>
+        </>
+      ) : (
+        <div>
+          <h3>¡Tu Plan de Dieta!</h3>
+          <pre style={{ whiteSpace: 'pre-wrap', backgroundColor: '#e1f0ff', padding: 15, borderRadius: 6 }}>{plan}</pre>
+          <button
+            onClick={() => {
+              setPlan(null);
+              setCurrentStep(0);
+              setFormValues({ age: '', weight: '', goal: '' });
+            }}
+            style={{
+              marginTop: 20,
+              padding: '10px 20px',
+              background: '#3a8ef7',
+              color: 'white',
+              border: 'none',
+              borderRadius: 6,
+              cursor: 'pointer',
+            }}
+          >
+            Empezar de nuevo
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default DietWizard;

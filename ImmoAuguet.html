@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImmoAuguet - Inmobiliaria en la Costa Brava</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .hero {
+      background: url('https://source.unsplash.com/1600x700/?costa,brava,beach') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .navbar { background-color: rgba(0,0,0,0.8) !important; }
+    .navbar-nav .nav-link { color: white !important; font-weight: 500; }
+    footer { background: #222; color: white; padding: 20px 0; }
+    footer a { color: #f8f9fa; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">ImmoAuguet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#propiedades">Propiedades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero" class="hero text-center">
+  <div>
+    <h1 data-aos="fade-up" data-aos-duration="1200">Tu Hogar en la Costa Brava</h1>
+    <p class="lead" data-aos="fade-up" data-aos-delay="300">Compra, vende o alquila con ImmoAuguet</p>
+    <a href="#propiedades" class="btn btn-primary btn-lg mt-3" data-aos="zoom-in">Ver Propiedades</a>
+  </div>
+</section>
+
+<!-- Propiedades Destacadas -->
+<section id="propiedades" class="container my-5">
+  <h2 class="text-center mb-4" data-aos="fade-right">Propiedades Destacadas</h2>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="flip-left">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?house,sea" class="card-img-top" alt="Casa">
+        <div class="card-body">
+          <h5 class="card-title">Casa en L’Escala</h5>
+          <p class="card-text">Vivienda con vistas al mar, 3 habitaciones, 2 baños.</p>
+          <p class="fw-bold">€350,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?apartment,beach" class="card-img-top" alt="Piso">
+        <div class="card-body">
+          <h5 class="card-title">Apartamento en Roses</h5>
+          <p class="card-text">Moderno apartamento a 100m de la playa.</p>
+          <p class="fw-bold">€220,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?villa,spain" class="card-img-top" alt="Villa">
+        <div class="card-body">
+          <h5 class="card-title">Villa en Begur</h5>
+          <p class="card-text">Villa de lujo con piscina privada y jardín.</p>
+          <p class="fw-bold">€750,000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4" data-aos="fade-up">Nuestros Servicios</h2>
+    <div class="row g-4">
+      <div class="col-md-4 text-center" data-aos="zoom-in">
+        <i class="bi bi-house-door-fill display-4 text-primary"></i>
+        <h5 class="mt-3">Compra y Venta</h5>
+        <p>Te ayudamos a encontrar tu hogar ideal o a vender tu propiedad al mejor precio.</p>
+      </div>
+      <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+        <i class="bi bi-key-fill display-4 text-primary"></i>
+        <h5 class="mt-3">Alquileres</h5>
+        <p>Encuentra pisos, casas o villas para alquilar en la Costa Brava.</p>
+      </div>
+      <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="400">
+        <i class="bi bi-person-badge-fill display-4 text-primary"></i>
+        <h5 class="mt-3">Asesoramiento</h5>
+        <p>Ofrecemos asesoría legal y financiera para que tu compra sea segura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galería -->
+<section id="galeria" class="container my-5">
+  <h2 class="text-center mb-4" data-aos="fade-left">Galería Costa Brava</h2>
+  <div class="row g-3">
+    <div class="col-md-4" data-aos="zoom-in"><img src="https://source.unsplash.com/600x400/?costa,brava" class="img-fluid rounded"></div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><img src="https://source.unsplash.com/600x400/?mediterranean,sea" class="img-fluid rounded"></div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400"><img src="https://source.unsplash.com/600x400/?spain,beach" class="img-fluid rounded"></div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4" data-aos="fade-up">Contáctanos</h2>
+    <form class="row g-3" data-aos="fade-up" action="enviar.php" method="post">
+      <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="col-12">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Mapa -->
+<section class="container my-5" data-aos="fade-up">
+  <h2 class="text-center mb-4">Dónde Estamos</h2>
+  <div class="ratio ratio-16x9">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46617.411995081236!2d3.1166!3d42.1254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ba5e67a9f6a7b3%3A0xfef342aa5a2b9df2!2sCosta%20Brava!5e0!3m2!1ses!2ses!4v1689857102101!5m2!1ses!2ses" 
+      style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p>© 2025 ImmoAuguet. Todos los derechos reservados.</p>
+    <p><a href="#hero">Volver arriba</a></p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
