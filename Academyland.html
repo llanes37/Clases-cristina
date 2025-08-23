@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academia SCROOM</title>
+  <title>Academyland</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AOS Animaciones -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -62,22 +63,38 @@
 <body>
   
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">SCROOM</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+  <div class="container">
+    
+    <a class="navbar-brand" href="#">
+      <img src="images/logo-scroom.png" alt="Logo de SCROOM" style="height: 40px;">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" href="#cursos">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" href="#testimonios">Testimonios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" href="#precios">Precios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" href="#contacto">Contacto</a>
+        </li>
+        <li class="nav-item ms-lg-3">
+          <a class="btn btn-primary" href="/login">Acceder</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Hero con Avatar IA -->
   <header class="hero">
@@ -131,96 +148,240 @@
   </section>
 
   <!-- Testimonios -->
-  <section id="testimonios" class="bg-light">
-    <div class="container">
-      <h2 class="text-center mb-5" data-aos="fade-up">Lo que dicen nuestros alumnos</h2>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="flip-left">
-          <blockquote class="blockquote">
-            <p>“Gracias a SCROOM conseguí mi primer empleo como programador.”</p>
-            <footer class="blockquote-footer">Carlos M.</footer>
-          </blockquote>
-        </div>
-        <div class="col-md-4" data-aos="flip-up">
-          <blockquote class="blockquote">
-            <p>“La tutora virtual hace que aprender sea mucho más fácil.”</p>
-            <footer class="blockquote-footer">Laura G.</footer>
-          </blockquote>
-        </div>
-        <div class="col-md-4" data-aos="flip-right">
-          <blockquote class="blockquote">
-            <p>“Los cursos son completos y están muy bien explicados.”</p>
-            <footer class="blockquote-footer">Javier R.</footer>
-          </blockquote>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+  .testimonial-card {
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+  }
+  .testimonial-card .card-header {
+    background-color: transparent;
+    border-bottom: none;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+  .testimonial-card .profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .testimonial-card .student-name {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .star-rating {
+    color: #FFC107;
+    font-size: 1.1rem;
+    margin-top: 5px;
+  }
+  .google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  .card-footer {
+    background-color: transparent;
+    border-top: none;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+</style>
+
+<section id="testimonios" class="bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Lo que dicen nuestros alumnos</h2>
+    
+    <div class="row g-4 justify-content-center">
+
+      <!-- Testimonio 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm testimonial-card p-3">
+          <div class="card-header">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos M." class="profile-pic">
+            <div>
+              <h5 class="student-name">Carlos M.</h5>
+              <div class="star-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>“Gracias a SCROOM conseguí mi primer empleo como programador. El curso fue práctico, directo al grano y con un soporte increíble.”</p>
+          </div>
+          <div class="card-footer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Maps" class="google-icon">
+            <span>Publicado en Google</span>
+          </div>
         </div>
       </div>
+
+      <!-- Testimonio 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm testimonial-card p-3">
+          <div class="card-header">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Laura G." class="profile-pic">
+            <div>
+              <h5 class="student-name">Laura G.</h5>
+              <div class="star-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>“La tutora virtual es una pasada. Resuelve dudas al instante y hace que aprender sobre marketing digital sea mucho más fácil y entretenido.”</p>
+          </div>
+          <div class="card-footer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Maps" class="google-icon">
+            <span>Publicado en Google</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonio 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 shadow-sm testimonial-card p-3">
+          <div class="card-header">
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Javier R." class="profile-pic">
+            <div>
+              <h5 class="student-name">Javier R.</h5>
+              <div class="star-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>“Los cursos son muy completos y están muy bien explicados. El contenido de diseño gráfico está totalmente actualizado a las herramientas de hoy.”</p>
+          </div>
+          <div class="card-footer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Maps" class="google-icon">
+            <span>Publicado en Google</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Precios -->
   <section id="precios">
-    <div class="container">
-      <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Planes</h2>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="zoom-in">
-          <div class="card text-center shadow">
-            <div class="card-body">
-              <h5 class="card-title">Básico</h5>
-              <p>Acceso a 5 cursos</p>
-              <h3>19€/mes</h3>
-              <a href="#" class="btn btn-outline-primary">Elegir</a>
-            </div>
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Planes</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">Básico</h5>
+            <p>Acceso a 5 cursos</p>
+            <h3>19€/mes</h3>
+            <a href="#contacto" class="btn btn-outline-primary" onclick="seleccionarPlan('Básico')">Elegir</a>
           </div>
         </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-          <div class="card text-center shadow border-primary">
-            <div class="card-body">
-              <h5 class="card-title">Pro</h5>
-              <p>Acceso total + tutora virtual</p>
-              <h3>39€/mes</h3>
-              <a href="#" class="btn btn-primary">Elegir</a>
-            </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card text-center shadow border-primary">
+          <div class="card-body">
+            <h5 class="card-title">Pro</h5>
+            <p>Acceso total + tutora virtual</p>
+            <h3>39€/mes</h3>
+            <a href="#contacto" class="btn btn-primary" onclick="seleccionarPlan('Pro')">Elegir</a>
           </div>
         </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
-          <div class="card text-center shadow">
-            <div class="card-body">
-              <h5 class="card-title">Premium</h5>
-              <p>Ilimitado + certificado oficial</p>
-              <h3>59€/mes</h3>
-              <a href="#" class="btn btn-outline-primary">Elegir</a>
-            </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+        <div class="card text-center shadow">
+          <div class="card-body">
+            <h5 class="card-title">Premium</h5>
+            <p>Ilimitado + certificado oficial</p>
+            <h3>59€/mes</h3>
+            <a href="#contacto" class="btn btn-outline-primary" onclick="seleccionarPlan('Premium')">Elegir</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contacto -->
-  <section id="contacto" class="bg-light">
-    <div class="container">
-      <h2 class="text-center mb-5" data-aos="fade-up">Contáctanos</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <form data-aos="fade-up">
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" required>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo</label>
-              <input type="email" class="form-control" id="email" required>
-            </div>
-            <div class="mb-3">
-              <label for="mensaje" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>
-        </div>
+<!-- Contacto -->
+<section id="contacto" class="bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Contáctanos</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form id="formContacto" onsubmit="enviarFormulario(event)" data-aos="fade-up">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="plan" class="form-label">Plan de interés</label>
+            <select class="form-control" id="plan" required>
+              <option value="">Seleccione un plan...</option>
+              <option value="Básico">Básico - 19€/mes</option>
+              <option value="Pro">Pro - 39€/mes</option>
+              <option value="Premium">Premium - 59€/mes</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+  function seleccionarPlan(plan) {
+    document.getElementById('plan').value = plan;
+  }
+
+  function enviarFormulario(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const plan = document.getElementById('plan').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    // Texto para enviar
+    const texto = `Hola, soy ${nombre} (${email}) y estoy interesado en el plan ${plan}. Mensaje: ${mensaje}`;
+
+    // Enviar por Email
+    window.location.href = `mailto:cdasilvaauguet@gmail.com?subject=Consulta sobre plan ${plan}&body=${encodeURIComponent(texto)}`;
+
+    // Enviar por WhatsApp
+    const telefono = '34606085385';
+    window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`, '_blank');
+  }
+</script>
+
 
   <!-- Footer -->
   <footer>
